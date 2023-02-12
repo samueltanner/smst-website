@@ -37,16 +37,18 @@ export const InteractiveSubHeader = ({}) => {
           </span>
         </div>
 
-        {/* <div className="flex-none z-10"> */}
-        <Image
-          src="/img/headshot.png"
-          width={320}
-          height={320}
-          alt="Sam Tanner"
-          style={{ filter: `hue-rotate(${degree}deg)` }}
-          onClick={() => handleRotate()}
-        />
-        {/* </div> */}
+        <div className="relative flex-none z-10">
+          <span className="absolute top-10 right-16 h-28 w-24 rounded-full bg-zinc-900" />
+
+          <Image
+            src="/img/headshot.png"
+            width={320}
+            height={320}
+            alt="Sam Tanner"
+            style={{ filter: `hue-rotate(${degree}deg)` }}
+            onClick={() => handleRotate()}
+          />
+        </div>
       </div>
     </motion.div>
   );
