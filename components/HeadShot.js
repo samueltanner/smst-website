@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { ShirtCutout } from "./Shirt";
 import { FiChevronDown, FiRefreshCcw } from "react-icons/fi";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export const HeadShot = ({
   headShotImage,
@@ -19,11 +19,11 @@ export const HeadShot = ({
   };
 
   return (
-    <div className="flex relative flex-none z-20 h-full justify-center items-end ">
+    <div className="relative z-20 flex h-full flex-none items-end justify-center ">
       <div
-        className={`ml-16 absolute self-center justify-self-center text-slate-900 border-2 border-zinc-900 rounded-full flex items-center justify-center bg-white hover:drop-shadow-md hover:bg-zinc-200 p-1 f-full ${
+        className={`f-full absolute ml-16 flex items-center justify-center self-center justify-self-center rounded-full border-2 border-zinc-900 bg-white p-1 text-slate-900 hover:bg-zinc-200 hover:drop-shadow-md ${
           headShotImage === "mark" && "rotate-180"
-        } transition ease-in-out duration-300`}
+        } transition duration-300 ease-in-out`}
       >
         <FiRefreshCcw
           className="h-4 w-4 stroke-[3px]"
@@ -34,7 +34,6 @@ export const HeadShot = ({
               headShotImage === "sam" ? ["MARK"] : ["SAM", "TANNER"]
             );
           }}
-          on
         />
       </div>
       <motion.div
@@ -50,7 +49,7 @@ export const HeadShot = ({
         exit={{ y: 0 }}
       >
         {headShotImage === "sam" && (
-          <span className="absolute top-14 right-16 h-28 w-24 rounded-full bg-zinc-900 z-0 mr-1" />
+          <span className="absolute top-14 right-16 z-0 mr-1 h-28 w-24 rounded-full bg-zinc-900" />
         )}
 
         <Image
@@ -83,9 +82,9 @@ export const HeadShot = ({
       </motion.div>
 
       <span
-        className={`absolute -right-8 bottom-4 text-slate-900 border-2 border-zinc-900 rounded-full flex items-center justify-center bg-white hover:drop-shadow-md hover:bg-zinc-200 ${
+        className={`absolute -right-8 bottom-4 flex items-center justify-center rounded-full border-2 border-zinc-900 bg-white text-slate-900 hover:bg-zinc-200 hover:drop-shadow-md ${
           headShotCollapsed && "rotate-180"
-        } transition ease-in-out duration-300`}
+        } transition duration-300 ease-in-out`}
         ref={collapseButtonRef}
       >
         <FiChevronDown
