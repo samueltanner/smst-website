@@ -13,7 +13,7 @@ export default function Home() {
 
   return (
     <div className="default">
-      {/* <Header />   / */}
+      <Header />
       <div className="h-[400px]">
         {/* <CutoutShape /> */}
         <InteractiveSubHeader />
