@@ -4,24 +4,20 @@ import { ShirtCutout } from "./Shirt";
 import { FiChevronDown, FiRefreshCcw } from "react-icons/fi";
 import { useState, useRef } from "react";
 
-export const HeadShot = ({}) => {
+export const HeadShot = ({
+  headShotImage,
+  setHeadShotImage,
+  setHeaderArray,
+}) => {
   const [headShotCollapsed, setHeadShotCollapsed] = useState(false);
   const [degree, setDegree] = useState(0);
   const [shirtOverlayHidden, setShirtOverlayHidden] = useState(false);
-  const [headShotImage, setHeadShotImage] = useState("sam");
   const collapseButtonRef = useRef(null);
 
   const handleRotate = () => {
     setDegree(degree + 30);
   };
 
-  const pointerIsOverElement = (e) => {
-    const { top, left, bottom, right } =
-      collapseButtonRef.current.getBoundingClientRect();
-    const x = e.clientX;
-    const y = e.clientY;
-    return x > left && x < right && y > top && y < bottom;
-  };
   return (
     <div className="flex relative flex-none z-20 h-full justify-center items-end ">
       <div
@@ -32,17 +28,30 @@ export const HeadShot = ({}) => {
         <FiRefreshCcw
           className="h-4 w-4 stroke-[3px]"
           onClick={() => {
+            setShirtOverlayHidden(false);
             setHeadShotImage(headShotImage === "sam" ? "mark" : "sam");
+            setHeaderArray(
+              headShotImage === "sam" ? ["MARK"] : ["SAM", "TANNER"]
+            );
           }}
           on
         />
       </div>
       <motion.div
         initial={{ y: 0 }}
-        animate={{ y: headShotCollapsed ? "70%" : 0 }}
+        animate={{
+          y: headShotCollapsed ? "70%" : 0,
+          transition: {
+            type: "spring",
+            damping: 30,
+            stiffness: 100,
+          },
+        }}
         exit={{ y: 0 }}
       >
-        <span className="absolute top-10 right-16 h-28 w-24 rounded-full bg-zinc-900 z-0" />
+        {headShotImage === "sam" && (
+          <span className="absolute top-14 right-16 h-28 w-24 rounded-full bg-zinc-900 z-0 mr-1" />
+        )}
 
         <Image
           src={headShotImage === "sam" ? "/img/headshot.png" : "/img/mark.png"}
@@ -57,7 +66,7 @@ export const HeadShot = ({}) => {
         <AnimatePresence>
           {!shirtOverlayHidden && headShotImage === "sam" && (
             <motion.span
-              className="absolute top-[63px] h-full w-full text-zinc-900 "
+              className="absolute top-[63px] h-full w-full text-zinc-900 hover:text-zinc-800"
               initial={{ opacity: 1 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
