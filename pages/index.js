@@ -8,10 +8,7 @@ import { InteractiveSubHeader } from "../components/InteractiveSubHeader";
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>Sam Tanner</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+     
       <Header />
       <div className="h-[400px]">
         {/* <CutoutShape /> */}

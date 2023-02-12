@@ -14,15 +14,13 @@ export const InteractiveSubHeader = ({}) => {
 
   return (
     <motion.div className="relative h-full w-full">
-      <span className="h-[400px]">
-        <CutoutShape />{" "}
-      </span>
+      <CutoutShape />
       <div
         className="relative flex justify-end items-end h-full w-4/5"
         ref={constraintsRef}
       >
-        <div className="absolute left-0 flex flex-col z-30 h-full gap-2 justify-top pt-4 pl-4">
-          <span className="flex flex-none gap-2">
+        <div className="absolute left-0 flex flex-col z-30 h-full gap-2 justify-top pt-4 pl-4 w-screen max-w-full">
+          <span className="flex flex-none w-full">
             <MoveableLetter constraintsRef={constraintsRef} letter="S" />
             <MoveableLetter constraintsRef={constraintsRef} letter="A" />
             <MoveableLetter constraintsRef={constraintsRef} letter="M" />
@@ -37,9 +35,9 @@ export const InteractiveSubHeader = ({}) => {
           </span>
         </div>
 
+        {/* <span className="absolute top-0 -right-28 h-[400px] w-[400px] rounded-full bg-yellow-500" /> */}
         <div className="relative flex-none z-10">
           <span className="absolute top-10 right-16 h-28 w-24 rounded-full bg-zinc-900" />
-
           <Image
             src="/img/headshot.png"
             width={320}

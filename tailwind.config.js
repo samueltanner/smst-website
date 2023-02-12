@@ -14,6 +14,9 @@ module.exports = {
         "grid-paper": "url('/img/grid-paper.jpeg')",
         "footer-texture": "url('/img/footer-texture.png')",
       },
+      fontFamily: {
+        soleil: ["soleil", "sans-serif"],
+      },
     },
   },
   plugins: [],

@@ -6,7 +6,7 @@ export const CutoutShape = ({ children }) => {
       viewBox="0 0 42 56.69"
       version="1.0"
       encoding="UTF-8"
-      className="flex absolute -right-0 h-[400px] text-zinc-900 fill-current z-20"
+      className="sm:flex absolute -right-0 h-[400px] text-zinc-900 fill-current z-20 hidden"
     >
       <g id="Layer_1-2">
         <path
