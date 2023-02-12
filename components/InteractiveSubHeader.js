@@ -1,25 +1,17 @@
-import Image from "next/image";
-import { useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useRef } from "react";
+import { motion } from "framer-motion";
 import { MoveableLetter } from "./MoveableLetter";
 import { CutoutShape } from "./CutoutShape";
-import { ShirtCutout } from "./Shirt";
 import { HeadShot } from "./HeadShot";
 
 export const InteractiveSubHeader = ({}) => {
-  const [degree, setDegree] = useState(0);
-  const [shirtOverlayHidden, setShirtOverlayHidden] = useState(false);
   const constraintsRef = useRef(null);
 
-  const handleRotate = () => {
-    setDegree(degree + 30);
-  };
-
   return (
-    <motion.div className="relative h-full w-full">
+    <motion.div className="relative h-full w-full overflow-y-hidden">
       <CutoutShape />
       <div
-        className="relative flex justify-end items-end h-full w-4/5"
+        className="relative flex justify-end items-end h-full w-4/5 "
         ref={constraintsRef}
       >
         <div className="absolute left-0 flex flex-col h-full gap-2 justify-top pt-4 pl-4  max-w-full z-50">
@@ -37,12 +29,7 @@ export const InteractiveSubHeader = ({}) => {
             <MoveableLetter constraintsRef={constraintsRef} letter="R" />
           </span>
         </div>
-        <HeadShot
-          setShirtOverlayHidden={setShirtOverlayHidden}
-          shirtOverlayHidden={shirtOverlayHidden}
-          handleRotate={handleRotate}
-          degree={degree}
-        />
+        <HeadShot />
       </div>
     </motion.div>
   );
