@@ -8,7 +8,7 @@ import { InteractiveSubHeader } from "../components/InteractiveSubHeader";
 export default function Home() {
   return (
     <>
-     
+
       <Header />
       <div className="h-[400px]">
         {/* <CutoutShape /> */}
