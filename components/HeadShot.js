@@ -92,7 +92,6 @@ export const HeadShot = ({
           onClick={() => {
             setHeadShotCollapsed(!headShotCollapsed);
           }}
-          on
         />
       </span>
     </div>
