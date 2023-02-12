@@ -1,12 +1,12 @@
-export const CutoutShape = ({ children }) => {
+export const CutoutShape = () => {
   return (
     <svg
       id="Layer_2"
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 42 56.69"
+      viewBox="0 .1 42.5 56.5"
       version="1.0"
       encoding="UTF-8"
-      className="sm:flex absolute -right-0 h-[400px] text-zinc-900 fill-current z-20 hidden"
+      className="sm:flex absolute right-0 h-[400px] text-zinc-900 fill-current z-20 hidden"
     >
       <g id="Layer_1-2">
         <path
