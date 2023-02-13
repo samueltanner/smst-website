@@ -2,7 +2,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { ShirtCutout } from "./Shirt";
 import { FiChevronDown, FiRefreshCcw } from "react-icons/fi";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
+import ThemeContext from "./theme/themeContext";
 
 export const HeadShot = ({
   headShotImage,
@@ -17,6 +18,7 @@ export const HeadShot = ({
   const handleRotate = () => {
     setDegree(degree + 30);
   };
+  const { theme, setTheme } = useContext(ThemeContext);
 
   return (
     <div className="relative z-20 flex h-full flex-none items-end justify-center ">
@@ -33,6 +35,7 @@ export const HeadShot = ({
             setHeaderArray(
               headShotImage === "sam" ? ["MARK"] : ["SAM", "TANNER"]
             );
+            setTheme(theme === "default" ? "mark" : "default");
           }}
         />
       </div>
@@ -60,6 +63,7 @@ export const HeadShot = ({
           style={{ filter: `hue-rotate(${degree}deg)` }}
           onClick={handleRotate}
           priority
+          className="select-none"
         />
 
         <AnimatePresence>

@@ -1,3 +1,3 @@
 export const Header = ({ children }) => {
-  return <div className="bg-zinc-900 h-20 flex z-50">{children}</div>;
+  return <div className="z-50 flex h-20 bg-primary">{children}</div>;
 };
