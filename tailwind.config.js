@@ -48,6 +48,14 @@ module.exports = {
             },
           },
         },
+        {
+          name: "woodsy",
+          extend: {
+            colors: {
+              primary: "#7F836E",
+            },
+          },
+        },
       ],
     }),
   ],

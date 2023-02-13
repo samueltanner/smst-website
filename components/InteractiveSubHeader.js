@@ -46,7 +46,7 @@ export const InteractiveSubHeader = ({}) => {
                 >
                   {word.split("").map((letter, letterIndex) => {
                     return (
-                      <Fragment key={letterIndex}>
+                      <Fragment key={`${headShotImage}-${letterIndex}`}>
                         <MoveableLetter
                           constraintsRef={constraintsRef}
                           letter={letter}
