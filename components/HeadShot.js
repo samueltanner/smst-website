@@ -21,9 +21,9 @@ export const HeadShot = ({
   const { theme, setTheme } = useContext(ThemeContext);
 
   return (
-    <div className="relative z-20 flex h-full flex-none items-end justify-center ">
+    <div className="relative flex h-full flex-none items-end justify-center ">
       <div
-        className={`f-full absolute ml-16 flex items-center justify-center self-center justify-self-center rounded-full border-2 border-zinc-900 bg-white p-1 text-slate-900 hover:bg-zinc-200 hover:drop-shadow-md ${
+        className={`f-full absolute z-10  ml-16 flex items-center justify-center self-center justify-self-center rounded-full border-2 border-zinc-900 bg-white p-1 text-slate-900 ring-4 ring-white drop-shadow-md hover:bg-zinc-200 ${
           headShotImage === "mark" && "rotate-180"
         } transition duration-300 ease-in-out`}
       >
@@ -50,11 +50,11 @@ export const HeadShot = ({
           },
         }}
         exit={{ y: 0 }}
+        className="z-20"
       >
         {headShotImage === "sam" && (
           <span className="absolute top-14 right-16 z-0 mr-1 h-28 w-24 rounded-full bg-zinc-900" />
         )}
-
         <Image
           src={headShotImage === "sam" ? "/img/headshot.png" : "/img/mark.png"}
           width={320}
@@ -63,7 +63,7 @@ export const HeadShot = ({
           style={{ filter: `hue-rotate(${degree}deg)` }}
           onClick={handleRotate}
           priority
-          className="select-none"
+          className=" select-none"
         />
 
         <AnimatePresence>
@@ -86,7 +86,7 @@ export const HeadShot = ({
       </motion.div>
 
       <span
-        className={`absolute -right-8 bottom-4 flex items-center justify-center rounded-full border-2 border-zinc-900 bg-white text-slate-900 hover:bg-zinc-200 hover:drop-shadow-md ${
+        className={`absolute -right-8 bottom-4 z-30 flex items-center justify-center rounded-full border-2 border-zinc-900 bg-white text-slate-900 ring-4 ring-white drop-shadow-md hover:bg-zinc-200 ${
           headShotCollapsed && "rotate-180"
         } cursor-pointer transition duration-300 ease-in-out`}
         ref={collapseButtonRef}

@@ -6,7 +6,7 @@ export const CutoutShape = () => {
       viewBox="0 .1 42.5 56.5"
       version="1.0"
       encoding="UTF-8"
-      className="absolute right-0 z-20 hidden h-[400px] fill-current text-primary sm:flex"
+      className="absolute right-0 z-30 hidden h-[400px] fill-current text-primary sm:flex"
     >
       <g id="Layer_1-2">
         <path

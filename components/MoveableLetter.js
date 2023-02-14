@@ -6,7 +6,7 @@ export const MoveableLetter = ({ constraintsRef, letter }) => {
 
   return (
     <motion.div
-      className={`text-6xl text-bold flex items-center justify-center drop-shadow-xl self-center flex-none font-soleil font-bold pb-1 rounded-sm text-gray-900`}
+      className={`text-bold z-50 flex flex-none items-center justify-center self-center rounded-sm pb-1 font-soleil text-6xl font-bold text-gray-900 drop-shadow-xl`}
       drag
       dragConstraints={constraintsRef}
       dragTransition={{ bounceStiffness: 600, bounceDamping: 100 }}

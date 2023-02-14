@@ -30,10 +30,10 @@ export const ThemeSelector = ({}) => {
     },
   ];
   return (
-    <div className="relative z-30">
-      <div className="absolute -top-4 right-4 flex flex-col self-center justify-self-center">
+    <div className="relative z-40">
+      <div className="absolute -top-4 right-2 flex flex-col self-center justify-self-center">
         <div
-          className="relative flex h-8 w-8 cursor-pointer items-center justify-center rounded-md bg-white ring-offset-primary hover:bg-zinc-200"
+          className="relative flex h-8 w-8 cursor-pointer items-center justify-center rounded-md bg-white ring-offset-primary drop-shadow-md hover:bg-zinc-200"
           onClick={() => {
             setThemeDropdownOpen(!themeDropdownOpen);
           }}
@@ -47,7 +47,7 @@ export const ThemeSelector = ({}) => {
                 theme.name !== globalTheme && (
                   <div
                     key={index}
-                    className={`h-5 w-5 rotate-45 rounded-full bg-gradient-to-b ring-2 ring-white ${theme.colors.primary} ${theme.colors.accent}`}
+                    className={`h-5 w-5 rotate-45 rounded-full bg-gradient-to-b ring-2 ring-white drop-shadow-md ${theme.colors.primary} ${theme.colors.accent}`}
                     onClick={() => {
                       setTheme(theme.name);
                       setThemeDropdownOpen(false);
