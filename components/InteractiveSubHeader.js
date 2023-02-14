@@ -36,7 +36,7 @@ export const InteractiveSubHeader = ({}) => {
         className="relative flex h-full w-[100%] items-end justify-end sm:w-[65%] md:w-[80%]"
         ref={constraintsRef}
       >
-        <div className="justify-top absolute left-0 flex h-full max-w-full flex-col gap-2  pt-4 pl-4">
+        <div className="justify-top absolute left-0 flex h-full max-w-full flex-col gap-2  pt-4 pl-6">
           <span className="flex w-full flex-col">
             {headerArray.map((word, index) => {
               return (

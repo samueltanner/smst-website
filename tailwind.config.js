@@ -14,9 +14,6 @@ module.exports = {
         "grid-paper": "url('/img/grid-paper.jpeg')",
         "footer-texture": "url('/img/footer-texture.png')",
       },
-      fontFamily: {
-        soleil: ["soleil", "sans-serif"],
-      },
     },
   },
   plugins: [
@@ -40,6 +37,9 @@ module.exports = {
               secondary: "#91291c",
               accent: "white",
             },
+            fontFamily: {
+              primary: ["soleil", "sans-serif"],
+            },
           },
         },
         {
@@ -60,6 +60,9 @@ module.exports = {
               secondary: "#2C2C2C",
               accent: "#C2CDAA",
             },
+            fontFamily: {
+              primary: ["bd-supper", "sans-serif"],
+            },
           },
         },
         {
@@ -67,10 +70,13 @@ module.exports = {
           extend: {
             colors: {
               primary: "#778C8E",
-              secondary: "#49473E",
+              secondary: "#d0d8d8",
               accent: "#C2CDAA",
               dark: "#49473E",
               black: "#212524",
+            },
+            fontFamily: {
+              primary: ["p22-mackinac-pro", "serif"],
             },
           },
         },
