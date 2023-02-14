@@ -1,14 +1,24 @@
-import { useRef, useState, Fragment, useEffect } from "react";
+import { useRef, useState, Fragment, useEffect, useContext } from "react";
 import { motion } from "framer-motion";
 import { MoveableLetter } from "./MoveableLetter";
 import { CutoutShape } from "./CutoutShape";
 import { HeadShot } from "./HeadShot";
+import ThemeContext from "./theme/themeContext";
 
 export const InteractiveSubHeader = ({}) => {
   const [headShotImage, setHeadShotImage] = useState("sam");
   const [headerArray, setHeaderArray] = useState(["SAM", "TANNER"]);
   const constraintsRef = useRef(null);
   const [dimensions, setDimensions] = useState();
+
+  const { theme, setTheme } = useContext(ThemeContext);
+
+  useEffect(() => {
+    if (theme !== "mark") {
+      setHeadShotImage("sam");
+      setHeaderArray(["SAM", "TANNER"]);
+    }
+  }, [theme]);
 
   useEffect(() => {
     function handleResize() {
