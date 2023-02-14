@@ -22,7 +22,7 @@ export const HeadShot = ({
 
   return (
     <div className="relative z-20 flex h-full flex-none items-end justify-center ">
-    <div
+      <div
         className={`f-full absolute ml-16 flex items-center justify-center self-center justify-self-center rounded-full border-2 border-zinc-900 bg-white p-1 text-slate-900 hover:bg-zinc-200 hover:drop-shadow-md ${
           headShotImage === "mark" && "rotate-180"
         } transition duration-300 ease-in-out`}
@@ -69,7 +69,7 @@ export const HeadShot = ({
         <AnimatePresence>
           {!shirtOverlayHidden && headShotImage === "sam" && (
             <motion.span
-              className="absolute top-[63px] h-full w-full text-zinc-900 hover:text-zinc-800"
+              className="absolute top-[63px] h-full w-full text-secondary"
               initial={{ opacity: 1 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -88,7 +88,7 @@ export const HeadShot = ({
       <span
         className={`absolute -right-8 bottom-4 flex items-center justify-center rounded-full border-2 border-zinc-900 bg-white text-slate-900 hover:bg-zinc-200 hover:drop-shadow-md ${
           headShotCollapsed && "rotate-180"
-        } transition duration-300 ease-in-out`}
+        } cursor-pointer transition duration-300 ease-in-out`}
         ref={collapseButtonRef}
       >
         <FiChevronDown

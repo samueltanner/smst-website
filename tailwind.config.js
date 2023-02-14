@@ -37,6 +37,8 @@ module.exports = {
           extend: {
             colors: {
               primary: "#18181b",
+              secondary: "#91291c",
+              accent: "white",
             },
           },
         },
@@ -44,7 +46,9 @@ module.exports = {
           name: "mark",
           extend: {
             colors: {
-              primary: "#581c87",
+              primary: "#eab308",
+              secondary: "#18181b",
+              accent: "red",
             },
           },
         },
@@ -52,7 +56,21 @@ module.exports = {
           name: "woodsy",
           extend: {
             colors: {
-              primary: "#7F836E",
+              primary: "#414833",
+              secondary: "#2C2C2C",
+              accent: "#C2CDAA",
+            },
+          },
+        },
+        {
+          name: "desert",
+          extend: {
+            colors: {
+              primary: "#778C8E",
+              secondary: "#49473E",
+              accent: "#C2CDAA",
+              dark: "#49473E",
+              black: "#212524",
             },
           },
         },

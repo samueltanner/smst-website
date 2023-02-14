@@ -3,6 +3,7 @@ import { InteractiveSubHeader } from "../components/InteractiveSubHeader";
 import { ThemeProvider } from "../components/theme/themeContext";
 import { useState } from "react";
 import { Icon } from "../components/Icon";
+import { ThemeSelector } from "../components/theme/ThemeSelector";
 export default function Home() {
   const [theme, setTheme] = useState("default");
 
@@ -10,14 +11,11 @@ export default function Home() {
     <ThemeProvider value={{ theme, setTheme }}>
       <div className={theme}>
         <Header>
-          <span className="flex items-center justify-center pl-8">
-            <Icon
-              className={"w-8 h-8 fill-current text-white antialiased"}
-            />
-          </span>
+          <Icon className={"h-8 w-8 fill-current text-white antialiased"} />
+
+          <ThemeSelector />
         </Header>
-        <div className="h-[400px]">
-          {/* <CutoutShape /> */}
+        <div className="h-[400px] pointer-events-auto ">
           <InteractiveSubHeader />
         </div>
 
