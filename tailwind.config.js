@@ -39,6 +39,7 @@ module.exports = {
             },
             fontFamily: {
               primary: ["soleil", "sans-serif"],
+              secondary: ["bookmania", "serif"],
             },
           },
         },
@@ -52,6 +53,7 @@ module.exports = {
             },
             fontFamily: {
               primary: ["tomarik-display", "sans-serif"],
+              secondary: ["marco", "serif"],
             },
           },
         },

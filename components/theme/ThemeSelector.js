@@ -31,7 +31,7 @@ export const ThemeSelector = ({}) => {
   ];
   return (
     <div className="relative z-40">
-      <div className="absolute -top-4 right-2 flex flex-col self-center justify-self-center">
+      <div className="absolute -top-4 right-0 flex flex-col self-center justify-self-center">
         <div
           className="relative z-40 flex h-8 w-8 cursor-pointer items-center justify-center rounded-md bg-white ring-offset-primary drop-shadow-md hover:bg-zinc-200"
           onClick={() => {
@@ -40,9 +40,9 @@ export const ThemeSelector = ({}) => {
         >
           <span className="h-5 w-5 rotate-45 rounded-full bg-gradient-to-b from-primary to-accent" />
         </div>
-        <AnimatePresence exitBeforeEnter>
+        <AnimatePresence>
           {themeDropdownOpen && (
-            <div className="flex flex-col items-center gap-3 pt-3">
+            <div className="flex w-full flex-col items-center gap-3 self-center rounded-b-lg pt-3">
               {themeList.map(
                 (theme, index) =>
                   theme.name !== globalTheme && (
@@ -53,7 +53,7 @@ export const ThemeSelector = ({}) => {
                         setTheme(theme.name);
                         setThemeDropdownOpen(false);
                       }}
-                      initial={{ opacity: 0, y: -10 }}
+                      initial={{ opacity: 0, y: -10, rotate: 45 }}
                       animate={{
                         opacity: 1,
                         y: 0,

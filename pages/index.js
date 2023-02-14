@@ -1,12 +1,23 @@
 import { Header } from "../components/Header";
 import { InteractiveSubHeader } from "../components/InteractiveSubHeader";
 import { ThemeProvider } from "../components/theme/themeContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Icon } from "../components/Icon";
 import { ThemeSelector } from "../components/theme/ThemeSelector";
+import { getThemeFromLS, setThemeToLS } from "../lib/storage";
 export default function Home() {
   const [theme, setTheme] = useState("default");
 
+  useEffect(() => {
+    if (!theme) {
+      setTheme("default");
+    }
+    setThemeToLS(theme);
+  }, [theme]);
+
+  console.log(theme, "theme");
+
+  if (!theme) return <></>;
   return (
     <ThemeProvider value={{ theme, setTheme }}>
       <div className={theme}>

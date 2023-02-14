@@ -18,17 +18,22 @@ export const HeadShot = ({
   const handleRotate = () => {
     setDegree(degree + 30);
   };
+
+  useEffect(() => {
+    setHeadShotCollapsed(false);
+  }, [headShotImage]);
+
   const { theme, setTheme } = useContext(ThemeContext);
 
   return (
     <div className="relative flex h-full flex-none items-end justify-center ">
       <div
-        className={`f-full absolute z-10  ml-16 flex items-center justify-center self-center justify-self-center rounded-full border-2 border-zinc-900 bg-white p-1 text-slate-900 ring-4 ring-white drop-shadow-md hover:bg-zinc-200 ${
-          headShotImage === "mark" && "rotate-180"
-        } transition duration-300 ease-in-out`}
+        className={`f-full absolute z-10  ml-16 flex items-center justify-center self-center justify-self-center rounded-full border-2 border-zinc-900 bg-white p-1 text-slate-900 ring-4 ring-white drop-shadow-md hover:bg-zinc-200`}
       >
         <FiRefreshCcw
-          className="h-4 w-4 stroke-[3px]"
+          className={`h-4 w-4 stroke-[3px] ${
+            headShotImage === "mark" && "rotate-180"
+          } transition duration-300 ease-in-out`}
           onClick={() => {
             setShirtOverlayHidden(false);
             setHeadShotImage(headShotImage === "sam" ? "mark" : "sam");
@@ -53,7 +58,7 @@ export const HeadShot = ({
         className="z-20"
       >
         {headShotImage === "sam" && (
-          <span className="absolute top-14 right-16 z-0 mr-1 h-28 w-24 rounded-full bg-zinc-900" />
+          <span className="absolute top-14 right-16 z-0 mr-1 h-28 w-24 rounded-full bg-primary" />
         )}
         <Image
           src={headShotImage === "sam" ? "/img/headshot.png" : "/img/mark.png"}
@@ -86,13 +91,13 @@ export const HeadShot = ({
       </motion.div>
 
       <span
-        className={`absolute -left-10 bottom-4 z-30 flex items-center justify-center rounded-full border-2 border-zinc-900 bg-white text-slate-900 ring-4 ring-white drop-shadow-md hover:bg-zinc-200 sm:left-[330px] ${
-          headShotCollapsed && "rotate-180"
-        } cursor-pointer transition duration-300 ease-in-out`}
+        className={`absolute -left-10 bottom-4 z-30 flex items-center justify-center rounded-full border-2 border-zinc-900 bg-white text-slate-900 ring-4 ring-white drop-shadow-md hover:bg-zinc-200 sm:left-[330px]`}
         ref={collapseButtonRef}
       >
         <FiChevronDown
-          className="h-6 w-6 pt-0.5"
+          className={`h-6 w-6 pt-0.5 ${
+            headShotCollapsed && "rotate-180"
+          } cursor-pointer transition duration-300 ease-in-out`}
           onClick={() => {
             setHeadShotCollapsed(!headShotCollapsed);
           }}
