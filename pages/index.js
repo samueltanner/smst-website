@@ -15,8 +15,6 @@ export default function Home() {
     setThemeToLS(theme);
   }, [theme]);
 
-  console.log(theme, "theme");
-
   if (!theme) return <></>;
   return (
     <ThemeProvider value={{ theme, setTheme }}>

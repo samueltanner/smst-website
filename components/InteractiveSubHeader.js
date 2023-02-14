@@ -20,7 +20,7 @@ export const InteractiveSubHeader = ({}) => {
     }
     if (theme === "mark") {
       setHeadShotImage("mark");
-      setHeaderArray(["MARK", "DOG", "BARK", "WOOF", "GRRR"]);
+      setHeaderArray(["MARK", "(MY DOG)", "oh hi mark"]);
     }
   }, [theme]);
 
@@ -46,6 +46,7 @@ export const InteractiveSubHeader = ({}) => {
   return (
     <motion.div className="relative h-full w-full overflow-y-hidden">
       <CutoutShape />
+
       <div
         className="relative flex h-full w-[100%] items-end justify-end sm:w-[65%] md:w-[80%]"
         ref={constraintsRef}

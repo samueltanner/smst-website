@@ -3,7 +3,7 @@ export const CutoutShape = () => {
     <svg
       id="Layer_2"
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 .1 42.5 56.5"
+      viewBox="0 .14 42.5 56.5"
       version="1.0"
       encoding="UTF-8"
       className="absolute right-0 z-30 hidden h-[400px] fill-current text-primary sm:flex"

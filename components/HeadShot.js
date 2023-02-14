@@ -27,8 +27,14 @@ export const HeadShot = ({
 
   return (
     <div className="relative flex h-full flex-none items-end justify-center ">
-      <div
-        className={`f-full absolute z-10  ml-16 flex items-center justify-center self-center justify-self-center rounded-full border-2 border-zinc-900 bg-white p-1 text-slate-900 ring-4 ring-white drop-shadow-md hover:bg-zinc-200`}
+      <motion.div
+        className={`f-full absolute z-40  ml-16 flex items-center justify-center self-center justify-self-center rounded-full border-2 border-zinc-900 bg-white p-1 text-slate-900 ring-4 ring-white drop-shadow-md hover:bg-zinc-200`}
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: headShotCollapsed ? 1 : 0,
+          transition: { delay: headShotCollapsed ? 0.25 : 0 },
+        }}
+        exit={{ opacity: 0, transition: { delay: 0 } }}
       >
         <FiRefreshCcw
           className={`h-4 w-4 stroke-[3px] ${
@@ -43,7 +49,7 @@ export const HeadShot = ({
             setTheme(headShotImage === "sam" ? "mark" : "default");
           }}
         />
-      </div>
+      </motion.div>
       <motion.div
         initial={{ y: 0 }}
         animate={{
@@ -52,6 +58,7 @@ export const HeadShot = ({
             type: "spring",
             damping: 30,
             stiffness: 100,
+            delay: !headShotCollapsed ? 0.25 : 0,
           },
         }}
         exit={{ y: 0 }}
@@ -60,6 +67,7 @@ export const HeadShot = ({
         {headShotImage === "sam" && (
           <span className="absolute top-14 right-16 z-0 mr-1 h-28 w-24 rounded-full bg-primary" />
         )}
+
         <Image
           src={headShotImage === "sam" ? "/img/headshot.png" : "/img/mark.png"}
           width={320}
@@ -72,26 +80,28 @@ export const HeadShot = ({
         />
 
         <AnimatePresence>
-          {!shirtOverlayHidden && headShotImage === "sam" && (
-            <motion.span
-              className="absolute top-[63px] h-full w-full text-secondary"
-              initial={{ opacity: 1 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            >
-              <ShirtCutout
-                onClick={() => {
-                  setShirtOverlayHidden(true);
-                  handleRotate();
-                }}
-              />
-            </motion.span>
-          )}
+          <motion.span
+            className={`absolute top-[63px] h-full w-full  ${
+              !shirtOverlayHidden && headShotImage !== "mark"
+                ? "text-secondary"
+                : "text-transparent"
+            }`}
+            initial={{ opacity: 1 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <ShirtCutout
+              onClick={() => {
+                setShirtOverlayHidden(true);
+                handleRotate();
+              }}
+            />
+          </motion.span>
         </AnimatePresence>
       </motion.div>
 
       <span
-        className={`absolute -left-10 bottom-4 z-30 flex items-center justify-center rounded-full border-2 border-zinc-900 bg-white text-slate-900 ring-4 ring-white drop-shadow-md hover:bg-zinc-200 sm:left-[330px]`}
+        className={`absolute -left-10 bottom-4 z-50 flex items-center justify-center rounded-full border-2 border-zinc-900 bg-white text-slate-900 ring-4 ring-white drop-shadow-md hover:bg-zinc-200 sm:left-[330px]`}
         ref={collapseButtonRef}
       >
         <FiChevronDown
