@@ -63,7 +63,7 @@ export const HeadShot = ({
           style={{ filter: `hue-rotate(${degree}deg)` }}
           onClick={handleRotate}
           priority
-          className=" select-none"
+          className="select-none"
         />
 
         <AnimatePresence>
@@ -86,7 +86,7 @@ export const HeadShot = ({
       </motion.div>
 
       <span
-        className={`absolute -right-8 bottom-4 z-30 flex items-center justify-center rounded-full border-2 border-zinc-900 bg-white text-slate-900 ring-4 ring-white drop-shadow-md hover:bg-zinc-200 ${
+        className={`absolute -left-10 bottom-4 z-30 flex items-center justify-center rounded-full border-2 border-zinc-900 bg-white text-slate-900 ring-4 ring-white drop-shadow-md hover:bg-zinc-200 sm:left-[330px] ${
           headShotCollapsed && "rotate-180"
         } cursor-pointer transition duration-300 ease-in-out`}
         ref={collapseButtonRef}

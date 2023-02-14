@@ -33,7 +33,7 @@ export const InteractiveSubHeader = ({}) => {
     <motion.div className="relative h-full w-full overflow-y-hidden">
       <CutoutShape />
       <div
-        className="relative flex h-full w-[65%] items-end justify-end md:w-[80%]"
+        className="relative flex h-full w-[100%] items-end justify-end sm:w-[65%] md:w-[80%]"
         ref={constraintsRef}
       >
         <div className="justify-top absolute left-0 flex h-full max-w-full flex-col gap-2  pt-4 pl-4">
