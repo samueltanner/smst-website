@@ -11,11 +11,14 @@ export default function Home() {
     <ThemeProvider value={{ theme, setTheme }}>
       <div className={theme}>
         <Header>
-          <Icon className={"h-8 w-8 fill-current text-white antialiased"} />
+          <Icon
+            className={"h-8 w-8 fill-current text-white antialiased"}
+            icon={theme}
+          />
 
           <ThemeSelector />
         </Header>
-        <div className="h-[400px] pointer-events-auto ">
+        <div className="pointer-events-auto h-[400px] ">
           <InteractiveSubHeader />
         </div>
 

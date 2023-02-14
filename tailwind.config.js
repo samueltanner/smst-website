@@ -50,6 +50,9 @@ module.exports = {
               secondary: "#18181b",
               accent: "red",
             },
+            fontFamily: {
+              primary: ["tomarik-display", "sans-serif"],
+            },
           },
         },
         {
