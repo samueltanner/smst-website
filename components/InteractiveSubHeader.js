@@ -22,7 +22,7 @@ export const InteractiveSubHeader = ({}) => {
     }
     if (theme === 'mark') {
       setHeadShotImage('mark')
-      setHeaderArray(['MARK', '(MY DOG)'])
+      setHeaderArray(['MARK', '(MY DOG)', "bark", "bark", "bark"])
     }
   }, [theme])
 

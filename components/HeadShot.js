@@ -52,14 +52,18 @@ export const HeadShot = ({
           }}
         />
       </motion.div>
-      <HeadShotCutout
-        className={'absolute bottom-0 z-[100] fill-current text-transparent'}
-        onClick={() => {
-          console.log(!shirtOverlayHidden ? "Hey! That's my shirt!" : 'Trippy')
-          setShirtOverlayHidden(true)
-          handleRotate()
-        }}
-      />
+      {!headShotCollapsed && (
+        <HeadShotCutout
+          className={'absolute bottom-0 z-[100] fill-current text-transparent'}
+          onClick={() => {
+            console.log(
+              !shirtOverlayHidden ? "Hey! That's my shirt!" : 'Trippy'
+            )
+            setShirtOverlayHidden(true)
+            handleRotate()
+          }}
+        />
+      )}
       <motion.div
         className="group"
         initial={{ y: 0 }}
