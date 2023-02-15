@@ -1,29 +1,30 @@
-import { AnimatePresence, motion } from "framer-motion";
-import Image from "next/image";
-import { ShirtCutout } from "./Shirt";
-import { FiChevronDown, FiRefreshCcw } from "react-icons/fi";
-import { useState, useRef, useEffect, useContext } from "react";
-import ThemeContext from "./theme/themeContext";
+import { AnimatePresence, motion } from 'framer-motion'
+import Image from 'next/image'
+import { ShirtCutout } from './Shirt'
+import { FiChevronDown, FiRefreshCcw } from 'react-icons/fi'
+import { useState, useRef, useEffect, useContext } from 'react'
+import ThemeContext from './theme/themeContext'
+import { HeadShotCutout } from './HeadshotCutout'
 
 export const HeadShot = ({
   headShotImage,
   setHeadShotImage,
   setHeaderArray,
 }) => {
-  const [headShotCollapsed, setHeadShotCollapsed] = useState(false);
-  const [degree, setDegree] = useState(0);
-  const [shirtOverlayHidden, setShirtOverlayHidden] = useState(false);
-  const collapseButtonRef = useRef(null);
+  const [headShotCollapsed, setHeadShotCollapsed] = useState(false)
+  const [degree, setDegree] = useState(0)
+  const [shirtOverlayHidden, setShirtOverlayHidden] = useState(false)
+  const collapseButtonRef = useRef(null)
 
   const handleRotate = () => {
-    setDegree(degree + 30);
-  };
+    setDegree(degree + 30)
+  }
 
   useEffect(() => {
-    setHeadShotCollapsed(false);
-  }, [headShotImage]);
+    setHeadShotCollapsed(false)
+  }, [headShotImage])
 
-  const { setTheme } = useContext(ThemeContext);
+  const { setTheme } = useContext(ThemeContext)
 
   return (
     <div className="relative flex h-full flex-none items-end justify-center">
@@ -38,24 +39,25 @@ export const HeadShot = ({
       >
         <FiRefreshCcw
           className={`h-4 w-4 stroke-[3px] ${
-            headShotImage === "mark" && "rotate-180"
+            headShotImage === 'mark' && 'rotate-180'
           } transition duration-300 ease-in-out`}
           onClick={() => {
-            setShirtOverlayHidden(false);
-            setHeadShotImage(headShotImage === "sam" ? "mark" : "sam");
+            setShirtOverlayHidden(false)
+            setHeadShotImage(headShotImage === 'sam' ? 'mark' : 'sam')
             setHeaderArray(
-              headShotImage === "sam" ? ["MARK"] : ["SAM", "TANNER"]
-            );
-            setTheme(headShotImage === "sam" ? "mark" : "default");
+              headShotImage === 'sam' ? ['MARK'] : ['SAM', 'TANNER']
+            )
+            setTheme(headShotImage === 'sam' ? 'mark' : 'default')
           }}
         />
       </motion.div>
       <motion.div
+        className="group"
         initial={{ y: 0 }}
         animate={{
-          y: headShotCollapsed ? "70%" : 0,
+          y: headShotCollapsed ? '70%' : 0,
           transition: {
-            type: "spring",
+            type: 'spring',
             damping: 30,
             stiffness: 100,
             delay: !headShotCollapsed ? 0.25 : 0,
@@ -63,13 +65,27 @@ export const HeadShot = ({
         }}
         exit={{ y: 0 }}
       >
-        {headShotImage === "sam" && (
+        {headShotImage === 'sam' && (
           <span className="absolute top-14 right-16 mr-1 h-28 w-24 rounded-full bg-primary" />
         )}
-        <span className={`${headShotCollapsed ? "-z-10" : "z-20"}`}>
+
+        <span className={`${headShotCollapsed ? '-z-10' : 'z-20'}`}>
+          <HeadShotCutout
+            className={'absolute bottom-0 z-50 fill-current  text-transparent'}
+            onClick={() => {
+              // console.log('sillh')
+
+              console.log(
+                !shirtOverlayHidden ? "Hey! That's my shirt!" : 'Trippy'
+              )
+              setShirtOverlayHidden(true)
+              handleRotate()
+            }}
+          />
+
           <Image
             src={
-              headShotImage === "sam" ? "/img/headshot.png" : "/img/mark.png"
+              headShotImage === 'sam' ? '/img/headshot.png' : '/img/mark.png'
             }
             width={320}
             height={320}
@@ -83,50 +99,37 @@ export const HeadShot = ({
         <AnimatePresence>
           <motion.span
             className={`absolute top-[63px] h-full w-full  ${
-              !shirtOverlayHidden && headShotImage !== "mark"
-                ? "text-secondary"
-                : "text-transparent"
+              !shirtOverlayHidden && headShotImage !== 'mark'
+                ? 'text-secondary'
+                : 'text-transparent'
             }`}
             initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <div className="group">
-              <div
-                className="absolute bottom-16 z-50 h-1/2 w-full rounded-t-full bg-blue-500 opacity-0"
-                onClick={() => {
-                  console.log(
-                    !shirtOverlayHidden ? "Hey! That's my shirt!" : "Trippy"
-                  );
-                  setShirtOverlayHidden(true);
-                  handleRotate();
-                }}
-              />
-              <ShirtCutout
-                onClick={() => {
-                  setShirtOverlayHidden(true);
-                  handleRotate();
-                }}
-                className="group-hover:opacity-[95%]"
-              />
-            </div>
+            <ShirtCutout
+              onClick={() => {
+                setShirtOverlayHidden(true)
+                handleRotate()
+              }}
+              className="group-hover:opacity-[95%]"
+            />
           </motion.span>
         </AnimatePresence>
       </motion.div>
-
       <span
         className={`absolute -left-10 bottom-4 z-50 flex items-center justify-center rounded-full border-2 border-zinc-900 bg-white text-slate-900 ring-4 ring-white drop-shadow-md hover:bg-zinc-200 sm:left-[330px]`}
         ref={collapseButtonRef}
       >
         <FiChevronDown
           className={`h-6 w-6 pt-0.5 ${
-            headShotCollapsed && "rotate-180"
+            headShotCollapsed && 'rotate-180'
           } cursor-pointer transition duration-300 ease-in-out`}
           onClick={() => {
-            setHeadShotCollapsed(!headShotCollapsed);
+            setHeadShotCollapsed(!headShotCollapsed)
           }}
         />
       </span>
     </div>
-  );
-};
+  )
+}
