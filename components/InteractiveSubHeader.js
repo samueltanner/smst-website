@@ -18,7 +18,7 @@ export const InteractiveSubHeader = ({}) => {
   useEffect(() => {
     if (theme !== 'mark') {
       setHeadShotImage('sam')
-      setHeaderArray(['SAM', 'TANNER', 'DEVELOPER', 'DESIGNER', 'ENTREPRENEUR'])
+      setHeaderArray(['SAM', 'TANNER', 'developer', 'designer', 'entrepreneur'])
     }
     if (theme === 'mark') {
       setHeadShotImage('mark')
@@ -55,7 +55,7 @@ export const InteractiveSubHeader = ({}) => {
           ref={constraintsRef}
         >
           <div
-            className={`justify-top absolute left-0 flex h-full max-w-full flex-col gap-2 pl-6 pt-6 ${
+            className={`absolute left-0 flex h-full max-w-full flex-col justify-center gap-2 pl-6 pb-5 ${
               headShotCollapsed ? 'z-40' : 'z-0'
             }`}
           >
@@ -64,10 +64,10 @@ export const InteractiveSubHeader = ({}) => {
                 return (
                   <Fragment key={`${JSON.stringify(dimensions)}-${index}`}>
                     <span
-                      className={`flex  ${
-                        index < 12
+                      className={`flex font-primary  ${
+                        index < 2
                           ? 'font-primary text-6xl font-extrabold'
-                          : 'font-secondary text-3xl font-light leading-10'
+                          : 'mt-2 text-5xl font-light'
                       }`}
                     >
                       {word.split('').map((letter, letterIndex) => {
@@ -83,7 +83,7 @@ export const InteractiveSubHeader = ({}) => {
                     </span>
                     {index === 1 && (
                       <motion.div
-                        className=" w-full border-b-[10px] border-primary pt-0.5"
+                        className=" w-[240px] border-b-[10px] border-primary pt-0.5"
                         drag
                         dragConstraints={constraintsRef}
                         dragTransition={{
