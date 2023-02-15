@@ -24,7 +24,7 @@ a {
     color-scheme: dark;
   }
   body {
-    background : radial-gradient(#000 1px, #ffffff 1.5px) 0 0 / 25px 25px;
+    background : radial-gradient(#757575 1px, #ffffff 1.5px) 0 0 / 25px 25px;
     background-attachment: fixed;
     /* background: url("/img/paper.jpg");
     background-size: 50%;
