@@ -26,7 +26,7 @@ export const HeadShot = ({
   const { setTheme } = useContext(ThemeContext);
 
   return (
-    <div className="relative flex h-full flex-none items-end justify-center ">
+    <div className="relative z-50 flex h-full flex-none items-end justify-center sm:z-auto">
       <motion.div
         className={`f-full absolute z-40  ml-16 flex items-center justify-center self-center justify-self-center rounded-full border-2 border-zinc-900 bg-white p-1 text-slate-900 ring-4 ring-white drop-shadow-md hover:bg-zinc-200`}
         initial={{ opacity: 0 }}

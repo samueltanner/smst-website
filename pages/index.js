@@ -33,7 +33,7 @@ export default function Home() {
 
         <div className="relative flex flex-col text-black"></div>
         <div className="h-screen w-full bg-primary pt-4">
-          <div className=" bottom-0 border-b-[4px] border-secondary sm:mr-[294px] " />
+          <div className=" bottom-0 border-b-[4px] border-secondary sm:mr-[290px] " />
         </div>
       </div>
     </ThemeProvider>
