@@ -48,12 +48,9 @@ export const InteractiveSubHeader = ({}) => {
       <CutoutShape />
 
       <div className="relative flex h-full w-[100%] items-end justify-end sm:w-[65%] md:w-[80%]">
-        <div
-          className=" h-full w-full md:relative"
-          ref={constraintsRef}
-        >
+        <div className=" absolute h-full w-full md:relative" ref={constraintsRef}>
           <div className="justify-top absolute left-0 flex h-full max-w-full flex-col gap-2  pl-6 pt-6">
-            <span className="z-0 flex w-full flex-col">
+            <span className="z-50 flex w-full flex-col">
               {headerArray.map((word, index) => {
                 return (
                   <Fragment key={`${JSON.stringify(dimensions)}-${index}`}>
@@ -67,17 +64,14 @@ export const InteractiveSubHeader = ({}) => {
                       {word.split("").map((letter, letterIndex) => {
                         return (
                           <Fragment key={`${headShotImage}-${letterIndex}`}>
-                            <MoveableLetter
-                              constraintsRef={constraintsRef}
-                              letter={letter}
-                            />
+                            <MoveableLetter constraintsRef={constraintsRef} letter={letter} />
                           </Fragment>
                         );
                       })}
                     </span>
                     {index === 1 && (
                       <motion.div
-                        className="z-50 w-full border-b-[10px] border-primary pt-0.5"
+                        className="border-primary z-50 w-full border-b-[10px] pt-0.5"
                         drag
                         dragConstraints={constraintsRef}
                         dragTransition={{
@@ -94,11 +88,7 @@ export const InteractiveSubHeader = ({}) => {
             </span>
           </div>
         </div>
-        <HeadShot
-          headShotImage={headShotImage}
-          setHeadShotImage={setHeadShotImage}
-          setHeaderArray={setHeaderArray}
-        />
+        <HeadShot headShotImage={headShotImage} setHeadShotImage={setHeadShotImage} setHeaderArray={setHeaderArray} />
       </div>
     </motion.div>
   );
