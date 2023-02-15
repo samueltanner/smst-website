@@ -20,7 +20,7 @@ export const InteractiveSubHeader = ({}) => {
     }
     if (theme === "mark") {
       setHeadShotImage("mark");
-      setHeaderArray(["MARK", "(MY DOG)", "oh hi mark"]);
+      setHeaderArray(["MARK", "(MY DOG)"]);
     }
   }, [theme]);
 
@@ -48,11 +48,11 @@ export const InteractiveSubHeader = ({}) => {
       <CutoutShape />
 
       <div
-        className="relative flex h-full w-[100%] items-end justify-end sm:w-[65%] md:w-[80%]"
+        className="relative flex h-full w-[100%] items-end justify-end sm:w-[65%] md:w-[75%]"
         ref={constraintsRef}
       >
         <div className="justify-top absolute left-0 flex h-full max-w-full flex-col gap-2 pl-6 pt-6">
-          <span className="flex w-full flex-col">
+          <span className="z-40 flex w-full flex-col">
             {headerArray.map((word, index) => {
               return (
                 <Fragment key={`${JSON.stringify(dimensions)}-${index}`}>

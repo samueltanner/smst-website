@@ -31,8 +31,10 @@ export default function Home() {
           <InteractiveSubHeader />
         </div>
 
-        <div className="flex flex-col text-black "></div>
-        <div className="h-screen w-full bg-primary" />
+        <div className="relative flex flex-col text-black"></div>
+        <div className="h-screen w-full bg-primary pt-4">
+          <div className=" bottom-0 border-b-[4px] border-secondary sm:mr-[294px] " />
+        </div>
       </div>
     </ThemeProvider>
   );

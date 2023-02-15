@@ -23,7 +23,7 @@ export const HeadShot = ({
     setHeadShotCollapsed(false);
   }, [headShotImage]);
 
-  const { theme, setTheme } = useContext(ThemeContext);
+  const { setTheme } = useContext(ThemeContext);
 
   return (
     <div className="relative flex h-full flex-none items-end justify-center ">
@@ -64,20 +64,22 @@ export const HeadShot = ({
         exit={{ y: 0 }}
       >
         {headShotImage === "sam" && (
-          <span className="absolute top-14 right-16 z-0 mr-1 h-28 w-24 rounded-full bg-primary" />
+          <span className="absolute top-14 right-16 mr-1 h-28 w-24 rounded-full bg-primary" />
         )}
-
-        <Image
-          src={headShotImage === "sam" ? "/img/headshot.png" : "/img/mark.png"}
-          width={320}
-          height={320}
-          alt="Sam Tanner or Mark"
-          style={{ filter: `hue-rotate(${degree}deg)` }}
-          onClick={handleRotate}
-          priority
-          className="select-none"
-        />
-
+        <span className={`${headShotCollapsed ? "-z-10" : "z-20"}`}>
+          <Image
+            src={
+              headShotImage === "sam" ? "/img/headshot.png" : "/img/mark.png"
+            }
+            width={320}
+            height={320}
+            alt="Sam Tanner or Mark"
+            style={{ filter: `hue-rotate(${degree}deg)` }}
+            onClick={handleRotate}
+            priority
+            className="z-40 select-none"
+          />
+        </span>
         <AnimatePresence>
           <motion.span
             className={`absolute top-[63px] h-full w-full  ${
@@ -91,7 +93,7 @@ export const HeadShot = ({
           >
             <div className="group">
               <div
-                className="absolute bottom-16 z-40 h-1/2 w-full rounded-t-full"
+                className="absolute bottom-16 z-50 h-1/2 w-full rounded-t-full bg-blue-500 opacity-0"
                 onClick={() => {
                   console.log(
                     !shirtOverlayHidden ? "Hey! That's my shirt!" : "Trippy"
