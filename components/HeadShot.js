@@ -91,7 +91,7 @@ export const HeadShot = ({
           >
             <div className="group">
               <div
-                className="absolute bottom-16 z-[100] h-1/2 w-full rounded-t-full"
+                className="absolute bottom-16 z-40 h-1/2 w-full rounded-t-full"
                 onClick={() => {
                   console.log(
                     !shirtOverlayHidden ? "Hey! That's my shirt!" : "Trippy"
