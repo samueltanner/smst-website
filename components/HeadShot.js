@@ -10,8 +10,9 @@ export const HeadShot = ({
   headShotImage,
   setHeadShotImage,
   setHeaderArray,
+  headShotCollapsed,
+  setHeadShotCollapsed,
 }) => {
-  const [headShotCollapsed, setHeadShotCollapsed] = useState(false)
   const [degree, setDegree] = useState(0)
   const [shirtOverlayHidden, setShirtOverlayHidden] = useState(false)
   const collapseButtonRef = useRef(null)
@@ -27,9 +28,9 @@ export const HeadShot = ({
   const { setTheme } = useContext(ThemeContext)
 
   return (
-    <div className="relative flex h-full flex-none items-end justify-center">
+    <div className="group relative flex h-full flex-none items-end justify-center">
       <motion.div
-        className={`f-full absolute z-40  ml-16 flex items-center justify-center self-center justify-self-center rounded-full border-2 border-zinc-900 bg-white p-1 text-slate-900 ring-4 ring-white drop-shadow-md hover:bg-zinc-200`}
+        className={`f-full absolute z-40 ml-16 flex items-center justify-center self-center justify-self-center rounded-full border-2 border-zinc-900 bg-white p-1 text-slate-900 ring-4 ring-white drop-shadow-md hover:bg-zinc-200`}
         initial={{ opacity: 0 }}
         animate={{
           opacity: headShotCollapsed ? 1 : 0,
@@ -51,6 +52,14 @@ export const HeadShot = ({
           }}
         />
       </motion.div>
+      <HeadShotCutout
+        className={'absolute bottom-0 z-[100] fill-current text-transparent'}
+        onClick={() => {
+          console.log(!shirtOverlayHidden ? "Hey! That's my shirt!" : 'Trippy')
+          setShirtOverlayHidden(true)
+          handleRotate()
+        }}
+      />
       <motion.div
         className="group"
         initial={{ y: 0 }}
@@ -69,20 +78,7 @@ export const HeadShot = ({
           <span className="absolute top-14 right-16 mr-1 h-28 w-24 rounded-full bg-primary" />
         )}
 
-        <span className={`${headShotCollapsed ? '-z-10' : 'z-20'}`}>
-          <HeadShotCutout
-            className={'absolute bottom-0 z-50 fill-current  text-transparent'}
-            onClick={() => {
-              // console.log('sillh')
-
-              console.log(
-                !shirtOverlayHidden ? "Hey! That's my shirt!" : 'Trippy'
-              )
-              setShirtOverlayHidden(true)
-              handleRotate()
-            }}
-          />
-
+        <span>
           <Image
             src={
               headShotImage === 'sam' ? '/img/headshot.png' : '/img/mark.png'
@@ -93,7 +89,7 @@ export const HeadShot = ({
             style={{ filter: `hue-rotate(${degree}deg)` }}
             onClick={handleRotate}
             priority
-            className="z-40 select-none"
+            className="select-none"
           />
         </span>
         <AnimatePresence>
