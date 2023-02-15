@@ -30,7 +30,7 @@ export const ThemeSelector = ({}) => {
     },
   ];
   return (
-    <div className="relative z-40">
+    <div className="relative z-[100]">
       <div className="absolute -top-4 right-0 flex flex-col self-center justify-self-center">
         <div
           className="relative z-40 flex h-8 w-8 cursor-pointer items-center justify-center rounded-md bg-white ring-offset-primary drop-shadow-md hover:bg-zinc-200"

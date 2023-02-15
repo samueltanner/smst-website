@@ -47,8 +47,11 @@ export const InteractiveSubHeader = ({}) => {
     <motion.div className="relative h-full w-full overflow-y-hidden">
       <CutoutShape />
 
-      <div className="relative flex h-full w-[100%] items-end justify-end sm:w-[65%] md:w-[85%]">
-        <div className="h-full w-full" ref={constraintsRef}>
+      <div className="relative flex h-full w-[100%] items-end justify-end sm:w-[65%] md:w-[80%]">
+        <div
+          className=" h-full w-full md:relative"
+          ref={constraintsRef}
+        >
           <div className="justify-top absolute left-0 flex h-full max-w-full flex-col gap-2  pl-6 pt-6">
             <span className="z-0 flex w-full flex-col">
               {headerArray.map((word, index) => {
