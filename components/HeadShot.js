@@ -62,7 +62,6 @@ export const HeadShot = ({
           },
         }}
         exit={{ y: 0 }}
-        className="z-20"
       >
         {headShotImage === "sam" && (
           <span className="absolute top-14 right-16 z-0 mr-1 h-28 w-24 rounded-full bg-primary" />
@@ -90,12 +89,25 @@ export const HeadShot = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <ShirtCutout
-              onClick={() => {
-                setShirtOverlayHidden(true);
-                handleRotate();
-              }}
-            />
+            <div className="group">
+              <div
+                className="absolute bottom-16 z-[100] h-1/2 w-full rounded-t-full"
+                onClick={() => {
+                  console.log(
+                    !shirtOverlayHidden ? "Hey! That's my shirt!" : "Trippy"
+                  );
+                  setShirtOverlayHidden(true);
+                  handleRotate();
+                }}
+              />
+              <ShirtCutout
+                onClick={() => {
+                  setShirtOverlayHidden(true);
+                  handleRotate();
+                }}
+                className="group-hover:opacity-[95%]"
+              />
+            </div>
           </motion.span>
         </AnimatePresence>
       </motion.div>
