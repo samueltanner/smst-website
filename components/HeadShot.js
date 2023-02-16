@@ -1,10 +1,9 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import Image from 'next/image'
-import { ShirtCutout } from './Shirt'
+import { ShirtCutout } from './ShirtCutout'
 import { FiChevronDown, FiRefreshCcw } from 'react-icons/fi'
 import { useState, useRef, useEffect, useContext } from 'react'
 import ThemeContext from './theme/themeContext'
-import { HeadShotCutout } from './HeadshotCutout'
 
 export const HeadShot = ({
   headShotImage,
@@ -66,7 +65,7 @@ export const HeadShot = ({
         />
       )} */}
         <motion.div
-          className="group flex w-full"
+          className="group absolute flex h-full w-full items-end justify-end"
           // initial={{ y: 0 }}
           // animate={{
           //   y: headShotCollapsed ? '70%' : 0,
@@ -83,7 +82,7 @@ export const HeadShot = ({
           <span className="absolute top-14 right-16 mr-0.5 h-28 w-24 rounded-full bg-primary" />
         )} */}
 
-          <Image
+          {/* <Image
             src={
               headShotImage === 'sam' ? '/img/headshot.png' : '/img/mark.png'
             }
@@ -92,15 +91,26 @@ export const HeadShot = ({
             style={{ filter: `hue-rotate(${degree}deg)` }}
             onClick={handleRotate}
             priority
-            className="h-1/2 select-none object-contain object-bottom"
-          />
-          <Image
+            className="select-none items-end justify-end self-end bg-yellow-400 object-contain object-bottom "
+          /> */}
+          <div className="bototm-0 absolute">
+            <ShirtCutout className={'absolute fill-current text-secondary'} />
+            <img
+              src={
+                headShotImage === 'sam' ? '/img/headshot.png' : '/img/mark.png'
+              }
+              className="z-10 select-none items-end justify-end self-end object-contain object-bottom"
+              alt="sam or mark"
+            />
+          </div>
+
+          {/* <Image
             src="/img/shirt.svg"
             fill
-            className="mt-[1px] ml-[1px] h-1/2 select-none object-contain object-bottom"
+            className="my-svg z-50 mt-[1px] ml-[1px] h-1/2 select-none fill-current object-contain object-bottom text-blue-500"
             priority
             alt="shirt"
-          />
+          /> */}
 
           {/* <AnimatePresence>
             <motion.span
