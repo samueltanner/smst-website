@@ -49,13 +49,13 @@ export const InteractiveSubHeader = ({}) => {
     <div className="relative h-full w-full overflow-y-hidden">
       {/* <CutoutShape /> */}
 
-      <div className="relative flex h-full w-[100%] items-end justify-end">
+      <div className="relative flex h-full w-[100%] flex-row ">
         <div
-          className=" absolute h-full w-full md:relative"
+          className=" absolute z-50 h-full basis-[70%] md:relative"
           ref={constraintsRef}
         >
           <div
-            className={`absolute left-0 flex h-full max-w-full flex-col justify-end gap-2 pl-6 pb-4 ${
+            className={`absolute left-0 flex h-full max-w-full flex-col justify-start gap-2 pl-6 pb-4 pt-4 md:justify-end  ${
               headShotCollapsed ? 'z-40' : 'z-0'
             }`}
           >
@@ -66,7 +66,7 @@ export const InteractiveSubHeader = ({}) => {
                     <span
                       className={`flex font-primary  ${
                         index < 2
-                          ? 'font-primary text-6xl font-extrabold'
+                          ? 'font-primary text-8xl font-extrabold'
                           : 'mt-2 text-5xl font-light'
                       }`}
                     >
@@ -100,13 +100,15 @@ export const InteractiveSubHeader = ({}) => {
             </span>
           </div>
         </div>
-        <HeadShot
-          headShotImage={headShotImage}
-          setHeadShotImage={setHeadShotImage}
-          setHeaderArray={setHeaderArray}
-          headShotCollapsed={headShotCollapsed}
-          setHeadShotCollapsed={setHeadShotCollapsed}
-        />
+        <div className="mr-16 basis-[60%]">
+          <HeadShot
+            headShotImage={headShotImage}
+            setHeadShotImage={setHeadShotImage}
+            setHeaderArray={setHeaderArray}
+            headShotCollapsed={headShotCollapsed}
+            setHeadShotCollapsed={setHeadShotCollapsed}
+          />
+        </div>
       </div>
     </div>
   )
