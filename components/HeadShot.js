@@ -78,9 +78,9 @@ export const HeadShot = ({
         }}
         exit={{ y: 0 }}
       >
-        {headShotImage === 'sam' && (
+        {/* {headShotImage === 'sam' && (
           <span className="absolute top-14 right-16 mr-0.5 h-28 w-24 rounded-full bg-primary" />
-        )}
+        )} */}
 
         <span>
           <Image

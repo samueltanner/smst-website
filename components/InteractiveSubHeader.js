@@ -18,11 +18,11 @@ export const InteractiveSubHeader = ({}) => {
   useEffect(() => {
     if (theme !== 'mark') {
       setHeadShotImage('sam')
-      setHeaderArray(['SAM', 'TANNER', 'developer', 'designer', 'entrepreneur'])
+      setHeaderArray(['SAM', 'TANNER'])
     }
     if (theme === 'mark') {
       setHeadShotImage('mark')
-      setHeaderArray(['MARK', '(MY DOG)', "bark", "bark", "bark"])
+      setHeaderArray(['MARK', '(MY DOG)'])
     }
   }, [theme])
 
@@ -49,13 +49,13 @@ export const InteractiveSubHeader = ({}) => {
     <div className="relative h-full w-full overflow-y-hidden">
       {/* <CutoutShape /> */}
 
-      <div className="relative flex h-full w-[100%] items-end justify-end sm:w-[65%] md:w-[80%]">
+      <div className="relative flex h-full w-[100%] items-end justify-end">
         <div
           className=" absolute h-full w-full md:relative"
           ref={constraintsRef}
         >
           <div
-            className={`absolute left-0 flex h-full max-w-full flex-col justify-center gap-2 pl-6 pb-5 ${
+            className={`absolute left-0 flex h-full max-w-full flex-col justify-end gap-2 pl-6 pb-4 ${
               headShotCollapsed ? 'z-40' : 'z-0'
             }`}
           >
@@ -81,7 +81,7 @@ export const InteractiveSubHeader = ({}) => {
                         )
                       })}
                     </span>
-                    {index === 1 && (
+                    {/* {index === 1 && (
                       <motion.div
                         className=" w-[240px] border-b-[10px] border-primary pt-0.5"
                         drag
@@ -93,7 +93,7 @@ export const InteractiveSubHeader = ({}) => {
                         dragElastic={0.5}
                         whileTap={{ cursor: 'grabbing' }}
                       />
-                    )}
+                    )} */}
                   </Fragment>
                 )
               })}

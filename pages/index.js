@@ -28,7 +28,7 @@ export default function Home() {
           <ThemeSelector />
         </Header>
         <div className="h-full">
-          <div className="pointer-events-auto h-1/2">
+          <div className="pointer-events-auto h-3/4">
             {/* <CutoutShape /> */}
             <InteractiveSubHeader />
           </div>
