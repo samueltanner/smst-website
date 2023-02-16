@@ -1,3 +1,7 @@
 export const Section = ({ children }) => {
-  return <div className="h-[400px] bg-primary p-8">{children}</div>
+  return (
+    <>
+      <div className=" drop-shadow-lg">{children}</div>
+    </>
+  )
 }

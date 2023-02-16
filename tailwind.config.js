@@ -36,6 +36,7 @@ module.exports = {
               primary: '#18181b',
               secondary: '#91291c',
               accent: 'white',
+              offWhite: '#E6E4E2',
             },
             fontFamily: {
               primary: ['soleil', 'sans-serif'],
@@ -50,6 +51,7 @@ module.exports = {
               primary: '#eab308',
               secondary: '#18181b',
               accent: 'red',
+              offWhite: '#E6E4E2',
             },
             fontFamily: {
               primary: ['tomarik-display', 'sans-serif'],
@@ -64,6 +66,7 @@ module.exports = {
               primary: '#414833',
               secondary: '#2C2C2C',
               accent: '#C2CDAA',
+              offWhite: '#E6E4E2',
             },
             fontFamily: {
               primary: ['bd-supper', 'sans-serif'],
@@ -79,7 +82,7 @@ module.exports = {
               accent: '#C2CDAA',
               dark: '#49473E',
               black: '#212524',
-              'off-white': '#E6E4E2',
+              offWhite: '#E6E4E2',
             },
             fontFamily: {
               primary: ['p22-mackinac-pro', 'serif'],
