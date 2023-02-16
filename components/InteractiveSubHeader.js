@@ -47,7 +47,7 @@ export const InteractiveSubHeader = ({}) => {
 
   return (
     <div className="relative h-full w-full overflow-y-hidden">
-      <CutoutShape />
+      {/* <CutoutShape /> */}
 
       <div className="relative flex h-full w-[100%] items-end justify-end sm:w-[65%] md:w-[80%]">
         <div
