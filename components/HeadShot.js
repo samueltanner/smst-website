@@ -1,10 +1,10 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import Image from 'next/image'
-import { ShirtCutout } from './ShirtCutout'
+import { ShirtCutout } from './outlines/ShirtCutout'
 import { FiChevronDown, FiRefreshCcw } from 'react-icons/fi'
 import { useState, useRef, useEffect, useContext } from 'react'
 import ThemeContext from './theme/themeContext'
-import { HeadShotCutout } from './HeadShotCutout'
+import { HeadShotCutout } from './outlines/HeadShotCutout'
 
 export const HeadShot = ({
   headShotImage,

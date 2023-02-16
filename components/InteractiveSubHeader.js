@@ -1,7 +1,7 @@
 import { useRef, useState, Fragment, useEffect, useContext } from 'react'
 import { motion } from 'framer-motion'
 import { MoveableLetter } from './MoveableLetter'
-import { CutoutShape } from './CutoutShape'
+import { CutoutShape } from './outlines/CutoutShape'
 import { HeadShot } from './HeadShot'
 import ThemeContext from './theme/themeContext'
 

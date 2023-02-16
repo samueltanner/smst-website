@@ -1,41 +1,47 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useContext } from "react";
-import ThemeContext from "./themeContext";
+import { motion, AnimatePresence } from 'framer-motion'
+import { useState, useContext } from 'react'
+import ThemeContext from './themeContext'
 
-export const ThemeSelector = ({}) => {
-  const [themeDropdownOpen, setThemeDropdownOpen] = useState(false);
-  const { theme: globalTheme, setTheme } = useContext(ThemeContext);
+export const ThemeSelector = ({ headerVisible }) => {
+  const [themeDropdownOpen, setThemeDropdownOpen] = useState(false)
+  const { theme: globalTheme, setTheme } = useContext(ThemeContext)
 
   const themeList = [
     {
-      name: "default",
+      name: 'default',
       colors: {
-        primary: "from-[#18181b]",
-        accent: "to-white",
+        primary: 'from-[#18181b]',
+        accent: 'to-white',
       },
     },
     {
-      name: "woodsy",
+      name: 'woodsy',
       colors: {
-        primary: "from-[#414833]",
-        accent: "to-[#C2CDAA]",
+        primary: 'from-[#414833]',
+        accent: 'to-[#C2CDAA]',
       },
     },
     {
-      name: "desert",
+      name: 'desert',
       colors: {
-        primary: "from-[#778C8E]",
-        accent: "to-[#C2CDAA]",
+        primary: 'from-[#778C8E]',
+        accent: 'to-[#C2CDAA]',
       },
     },
-  ];
+  ]
   return (
     <div className="relative z-[100]">
-      <div className="absolute -top-4 right-0 flex flex-col self-center justify-self-center">
+      <div
+        className={`${
+          headerVisible
+            ? ' absolute -top-4 right-0'
+            : 'fixed bottom-6 right-6 rotate-180'
+        } flex flex-col self-center justify-self-center`}
+      >
         <div
           className="relative z-40 flex h-8 w-8 cursor-pointer items-center justify-center rounded-md bg-white ring-offset-primary drop-shadow-md hover:bg-zinc-200"
           onClick={() => {
-            setThemeDropdownOpen(!themeDropdownOpen);
+            setThemeDropdownOpen(!themeDropdownOpen)
           }}
         >
           <span className="h-5 w-5 rotate-45 rounded-full bg-gradient-to-b from-primary to-accent" />
@@ -50,8 +56,8 @@ export const ThemeSelector = ({}) => {
                       key={index}
                       className={`z-30 h-5 w-5 rotate-45 rounded-full bg-gradient-to-b ring-2 ring-white drop-shadow-md ${theme.colors.primary} ${theme.colors.accent}`}
                       onClick={() => {
-                        setTheme(theme.name);
-                        setThemeDropdownOpen(false);
+                        setTheme(theme.name)
+                        setThemeDropdownOpen(false)
                       }}
                       initial={{ opacity: 0, y: -10, rotate: 45 }}
                       animate={{
@@ -66,7 +72,7 @@ export const ThemeSelector = ({}) => {
                         y: -25 * (index + 1),
                         transition: {
                           delay: 0.1,
-                          type: "anticipate",
+                          type: 'anticipate',
                           damping: 1000,
                           stiffness: 800,
                         },
@@ -79,5 +85,5 @@ export const ThemeSelector = ({}) => {
         </AnimatePresence>
       </div>
     </div>
-  );
-};
+  )
+}
