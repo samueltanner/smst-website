@@ -4,6 +4,7 @@ import { ShirtCutout } from './ShirtCutout'
 import { FiChevronDown, FiRefreshCcw } from 'react-icons/fi'
 import { useState, useRef, useEffect, useContext } from 'react'
 import ThemeContext from './theme/themeContext'
+import { HeadShotCutout } from './HeadShotCutout'
 
 export const HeadShot = ({
   headShotImage,
@@ -53,35 +54,33 @@ export const HeadShot = ({
         />
       </motion.div> */}
         {/* {!headShotCollapsed && (
-        <HeadShotCutout
-          className={'absolute bottom-0 z-[100] fill-current text-transparent'}
-          onClick={() => {
-            console.log(
-              !shirtOverlayHidden ? "Hey! That's my shirt!" : 'Trippy'
-            )
-            setShirtOverlayHidden(true)
-            handleRotate()
-          }}
-        />
-      )} */}
-        <motion.div
-          className="group absolute flex h-full w-full items-end justify-end"
-          // initial={{ y: 0 }}
-          // animate={{
-          //   y: headShotCollapsed ? '70%' : 0,
-          //   transition: {
-          //     type: 'spring',
-          //     damping: 30,
-          //     stiffness: 100,
-          //     delay: !headShotCollapsed ? 0.25 : 0,
-          //   },
-          // }}
-          // exit={{ y: 0 }}
-        >
-          {/* {headShotImage === 'sam' && (
-          <span className="absolute top-14 right-16 mr-0.5 h-28 w-24 rounded-full bg-primary" />
+          <HeadShotCutout
+            className={
+              'absolute bottom-0 z-[100] fill-current text-transparent'
+            }
+            onClick={() => {
+              console.log(
+                !shirtOverlayHidden ? "Hey! That's my shirt!" : 'Trippy'
+              )
+              setShirtOverlayHidden(true)
+              handleRotate()
+            }}
+          />
         )} */}
-
+        <motion.div
+          className="group absolute flex h-full w-full items-end justify-end "
+          initial={{ y: 0 }}
+          animate={{
+            y: headShotCollapsed ? '70%' : 0,
+            transition: {
+              type: 'spring',
+              damping: 30,
+              stiffness: 100,
+              delay: !headShotCollapsed ? 0.25 : 0,
+            },
+          }}
+          exit={{ y: 0 }}
+        >
           {/* <Image
             src={
               headShotImage === 'sam' ? '/img/headshot.png' : '/img/mark.png'
@@ -93,28 +92,33 @@ export const HeadShot = ({
             priority
             className="select-none items-end justify-end self-end bg-yellow-400 object-contain object-bottom "
           /> */}
-          <div className="bototm-0 absolute">
-            <ShirtCutout className={'absolute fill-current text-secondary'} />
-            <img
-              src={
-                headShotImage === 'sam' ? '/img/headshot.png' : '/img/mark.png'
-              }
-              className="z-10 select-none items-end justify-end self-end object-contain object-bottom"
-              alt="sam or mark"
-            />
-          </div>
 
-          {/* <Image
-            src="/img/shirt.svg"
-            fill
-            className="my-svg z-50 mt-[1px] ml-[1px] h-1/2 select-none fill-current object-contain object-bottom text-blue-500"
-            priority
-            alt="shirt"
-          /> */}
+          <img
+            src={
+              headShotImage === 'sam' ? '/img/headshot.png' : '/img/mark.png'
+            }
+            className="z-20 select-none "
+            alt="sam or mark"
+          />
+          {headShotImage === 'sam' && (
+            <HeadShotCutout
+              className={'absolute z-0 -mb-[4px] fill-current text-primary'}
+            />
+          )}
+          <ShirtCutout
+            className={`absolute z-40 fill-current text-secondary ${
+              !shirtOverlayHidden && headShotImage !== 'mark'
+                ? 'text-secondary hover:text-opacity-90'
+                : 'text-transparent'
+            } transition duration-300 ease-in-out`}
+            onClick={() => {
+              setShirtOverlayHidden(true)
+            }}
+          />
 
           {/* <AnimatePresence>
             <motion.span
-              className={`absolute bottom-8 h-full w-full  ${
+              className={`absolute z-40 fill-current text-secondary ${
                 !shirtOverlayHidden && headShotImage !== 'mark'
                   ? 'text-secondary'
                   : 'text-transparent'
@@ -124,11 +128,7 @@ export const HeadShot = ({
               exit={{ opacity: 0 }}
             >
               <ShirtCutout
-                onClick={() => {
-                  setShirtOverlayHidden(true)
-                  handleRotate()
-                }}
-                className="group-hover:opacity-[95%]"
+                className={'absolute z-40 fill-current text-secondary'}
               />
             </motion.span>
           </AnimatePresence> */}
