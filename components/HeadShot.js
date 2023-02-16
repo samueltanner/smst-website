@@ -28,8 +28,9 @@ export const HeadShot = ({
   const { setTheme } = useContext(ThemeContext)
 
   return (
-    <div className="group relative flex h-full flex-none items-end justify-center">
-      <motion.div
+    <div className="flex h-full w-full items-end">
+      <div className="group relative flex h-[80%] w-full ">
+        {/* <motion.div
         className={`f-full absolute z-40 ml-16 flex items-center justify-center self-center justify-self-center rounded-full border-2 border-zinc-900 bg-white p-1 text-slate-900 ring-4 ring-white drop-shadow-md hover:bg-zinc-200`}
         initial={{ opacity: 0 }}
         animate={{
@@ -51,8 +52,8 @@ export const HeadShot = ({
             setTheme(headShotImage === 'sam' ? 'mark' : 'default')
           }}
         />
-      </motion.div>
-      {!headShotCollapsed && (
+      </motion.div> */}
+        {/* {!headShotCollapsed && (
         <HeadShotCutout
           className={'absolute bottom-0 z-[100] fill-current text-transparent'}
           onClick={() => {
@@ -63,61 +64,66 @@ export const HeadShot = ({
             handleRotate()
           }}
         />
-      )}
-      <motion.div
-        className="group"
-        initial={{ y: 0 }}
-        animate={{
-          y: headShotCollapsed ? '70%' : 0,
-          transition: {
-            type: 'spring',
-            damping: 30,
-            stiffness: 100,
-            delay: !headShotCollapsed ? 0.25 : 0,
-          },
-        }}
-        exit={{ y: 0 }}
-      >
-        {/* {headShotImage === 'sam' && (
+      )} */}
+        <motion.div
+          className="group flex w-full"
+          // initial={{ y: 0 }}
+          // animate={{
+          //   y: headShotCollapsed ? '70%' : 0,
+          //   transition: {
+          //     type: 'spring',
+          //     damping: 30,
+          //     stiffness: 100,
+          //     delay: !headShotCollapsed ? 0.25 : 0,
+          //   },
+          // }}
+          // exit={{ y: 0 }}
+        >
+          {/* {headShotImage === 'sam' && (
           <span className="absolute top-14 right-16 mr-0.5 h-28 w-24 rounded-full bg-primary" />
         )} */}
 
-        <span>
           <Image
             src={
               headShotImage === 'sam' ? '/img/headshot.png' : '/img/mark.png'
             }
-            width={320}
-            height={320}
+            fill
             alt="Sam Tanner or Mark"
             style={{ filter: `hue-rotate(${degree}deg)` }}
             onClick={handleRotate}
             priority
-            className="select-none"
+            className="h-1/2 select-none object-contain object-bottom"
           />
-        </span>
-        <AnimatePresence>
-          <motion.span
-            className={`absolute top-[63px] h-full w-full  ${
-              !shirtOverlayHidden && headShotImage !== 'mark'
-                ? 'text-secondary'
-                : 'text-transparent'
-            }`}
-            initial={{ opacity: 1 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <ShirtCutout
-              onClick={() => {
-                setShirtOverlayHidden(true)
-                handleRotate()
-              }}
-              className="group-hover:opacity-[95%]"
-            />
-          </motion.span>
-        </AnimatePresence>
-      </motion.div>
-      <span
+          <Image
+            src="/img/shirt.svg"
+            fill
+            className="mt-[1px] ml-[1px] h-1/2 select-none object-contain object-bottom"
+            priority
+            alt="shirt"
+          />
+
+          {/* <AnimatePresence>
+            <motion.span
+              className={`absolute bottom-8 h-full w-full  ${
+                !shirtOverlayHidden && headShotImage !== 'mark'
+                  ? 'text-secondary'
+                  : 'text-transparent'
+              }`}
+              initial={{ opacity: 1 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <ShirtCutout
+                onClick={() => {
+                  setShirtOverlayHidden(true)
+                  handleRotate()
+                }}
+                className="group-hover:opacity-[95%]"
+              />
+            </motion.span>
+          </AnimatePresence> */}
+        </motion.div>
+        {/* <span
         className={`absolute -left-10 bottom-4 z-50 flex items-center justify-center rounded-full border-2 border-zinc-900 bg-white text-slate-900 ring-4 ring-white drop-shadow-md hover:bg-zinc-200 sm:left-[330px]`}
         ref={collapseButtonRef}
       >
@@ -129,7 +135,8 @@ export const HeadShot = ({
             setHeadShotCollapsed(!headShotCollapsed)
           }}
         />
-      </span>
+      </span> */}
+      </div>
     </div>
   )
 }
