@@ -28,8 +28,8 @@ export const HeadShot = ({
   const { setTheme } = useContext(ThemeContext)
 
   return (
-    <div className="flex h-full w-full items-end">
-      <div className="group relative flex h-[80%] w-full ">
+    <div className="mr-16 flex h-full w-full items-end">
+      <div className="group relative flex h-[80%]  w-full ">
         {/* <motion.div
         className={`f-full absolute z-40 ml-16 flex items-center justify-center self-center justify-self-center rounded-full border-2 border-zinc-900 bg-white p-1 text-slate-900 ring-4 ring-white drop-shadow-md hover:bg-zinc-200`}
         initial={{ opacity: 0 }}
@@ -68,7 +68,7 @@ export const HeadShot = ({
           />
         )} */}
         <motion.div
-          className="group absolute flex h-full w-full items-end justify-end "
+          className="group absolute bottom-0 flex h-full w-full items-end justify-end"
           initial={{ y: 0 }}
           animate={{
             y: headShotCollapsed ? '70%' : 0,
@@ -97,16 +97,18 @@ export const HeadShot = ({
             src={
               headShotImage === 'sam' ? '/img/headshot.png' : '/img/mark.png'
             }
-            className="z-20 select-none "
+            className="z-20 max-h-full select-none"
             alt="sam or mark"
           />
           {headShotImage === 'sam' && (
             <HeadShotCutout
-              className={'absolute z-0 -mb-[4px] fill-current text-primary'}
+              className={
+                'absolute z-0 -mb-[4px] max-h-full fill-current text-primary'
+              }
             />
           )}
           <ShirtCutout
-            className={`absolute z-40 fill-current text-secondary ${
+            className={`absolute z-40 max-h-full fill-current text-secondary ${
               !shirtOverlayHidden && headShotImage !== 'mark'
                 ? 'text-secondary hover:text-opacity-90'
                 : 'text-transparent'
@@ -133,19 +135,19 @@ export const HeadShot = ({
             </motion.span>
           </AnimatePresence> */}
         </motion.div>
-        {/* <span
-        className={`absolute -left-10 bottom-4 z-50 flex items-center justify-center rounded-full border-2 border-zinc-900 bg-white text-slate-900 ring-4 ring-white drop-shadow-md hover:bg-zinc-200 sm:left-[330px]`}
-        ref={collapseButtonRef}
-      >
-        <FiChevronDown
-          className={`h-6 w-6 pt-0.5 ${
-            headShotCollapsed && 'rotate-180'
-          } cursor-pointer transition duration-300 ease-in-out`}
-          onClick={() => {
-            setHeadShotCollapsed(!headShotCollapsed)
-          }}
-        />
-      </span> */}
+        <span
+          className={`absolute -right-10 bottom-4 z-50 flex items-center justify-center rounded-full border-2 border-zinc-900 bg-white text-slate-900 ring-4 ring-white drop-shadow-md hover:bg-zinc-200 `}
+          ref={collapseButtonRef}
+        >
+          <FiChevronDown
+            className={`h-6 w-6 pt-0.5 ${
+              headShotCollapsed && 'rotate-180'
+            } cursor-pointer transition duration-300 ease-in-out`}
+            onClick={() => {
+              setHeadShotCollapsed(!headShotCollapsed)
+            }}
+          />
+        </span>
       </div>
     </div>
   )
