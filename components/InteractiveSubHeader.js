@@ -18,11 +18,11 @@ export const InteractiveSubHeader = ({}) => {
   useEffect(() => {
     if (theme !== 'mark') {
       setHeadShotImage('sam')
-      setHeaderArray(['SAM', 'TANNER', 'developer', 'designer', 'entrepreneur'])
+      setHeaderArray(['SAM', 'TANNER'])
     }
     if (theme === 'mark') {
       setHeadShotImage('mark')
-      setHeaderArray(['MARK', '(MY DOG)', "bark", "bark", "bark"])
+      setHeaderArray(['MARK', '(MY DOG)'])
     }
   }, [theme])
 
@@ -47,15 +47,15 @@ export const InteractiveSubHeader = ({}) => {
 
   return (
     <div className="relative h-full w-full overflow-y-hidden">
-      <CutoutShape />
+      {/* <CutoutShape /> */}
 
-      <div className="relative flex h-full w-[100%] items-end justify-end sm:w-[65%] md:w-[80%]">
+      <div className="relative flex h-full w-full flex-col justify-between  md:flex-row">
         <div
-          className=" absolute h-full w-full md:relative"
+          className="z-50 h-1/2 w-full md:relative  md:h-full md:w-1/2"
           ref={constraintsRef}
         >
           <div
-            className={`absolute left-0 flex h-full max-w-full flex-col justify-center gap-2 pl-6 pb-5 ${
+            className={`absolute left-0 flex h-full w-full flex-row justify-start gap-2  pl-6 pb-4 pt-4 md:justify-end  ${
               headShotCollapsed ? 'z-40' : 'z-0'
             }`}
           >
@@ -66,7 +66,7 @@ export const InteractiveSubHeader = ({}) => {
                     <span
                       className={`flex font-primary  ${
                         index < 2
-                          ? 'font-primary text-6xl font-extrabold'
+                          ? 'font-primary text-7xl font-extrabold md:text-8xl'
                           : 'mt-2 text-5xl font-light'
                       }`}
                     >
@@ -81,7 +81,7 @@ export const InteractiveSubHeader = ({}) => {
                         )
                       })}
                     </span>
-                    {index === 1 && (
+                    {/* {index === 1 && (
                       <motion.div
                         className=" w-[240px] border-b-[10px] border-primary pt-0.5"
                         drag
@@ -93,20 +93,22 @@ export const InteractiveSubHeader = ({}) => {
                         dragElastic={0.5}
                         whileTap={{ cursor: 'grabbing' }}
                       />
-                    )}
+                    )} */}
                   </Fragment>
                 )
               })}
             </span>
           </div>
         </div>
-        <HeadShot
-          headShotImage={headShotImage}
-          setHeadShotImage={setHeadShotImage}
-          setHeaderArray={setHeaderArray}
-          headShotCollapsed={headShotCollapsed}
-          setHeadShotCollapsed={setHeadShotCollapsed}
-        />
+        <div className="h-1/2 w-full md:h-full md:w-1/2">
+          <HeadShot
+            headShotImage={headShotImage}
+            setHeadShotImage={setHeadShotImage}
+            setHeaderArray={setHeaderArray}
+            headShotCollapsed={headShotCollapsed}
+            setHeadShotCollapsed={setHeadShotCollapsed}
+          />
+        </div>
       </div>
     </div>
   )
