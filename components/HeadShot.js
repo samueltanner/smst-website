@@ -28,7 +28,7 @@ export const HeadShot = ({
   const { setTheme } = useContext(ThemeContext)
 
   return (
-    <div className="mr-16 flex h-full w-full items-end">
+    <div className="flex h-full w-full items-end pr-16">
       <div className="group relative flex h-[80%] w-full items-center justify-center">
         <motion.div
           className={`absolute z-40 ml-40 flex rounded-full border-2 border-zinc-900 bg-white p-1 text-slate-900 ring-4 ring-white drop-shadow-md hover:bg-zinc-200`}

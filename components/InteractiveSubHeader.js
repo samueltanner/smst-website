@@ -49,13 +49,13 @@ export const InteractiveSubHeader = ({}) => {
     <div className="relative h-full w-full overflow-y-hidden">
       {/* <CutoutShape /> */}
 
-      <div className="relative flex h-full w-[100%] flex-row ">
+      <div className="relative flex h-full w-full flex-col justify-between  md:flex-row">
         <div
-          className=" absolute z-50 h-full basis-[70%] md:relative"
+          className="z-50 h-1/2 w-full md:relative  md:h-full md:w-1/2"
           ref={constraintsRef}
         >
           <div
-            className={`absolute left-0 flex h-full max-w-full flex-col justify-start gap-2 pl-6 pb-4 pt-4 md:justify-end  ${
+            className={`absolute left-0 flex h-full w-full flex-row justify-start gap-2  pl-6 pb-4 pt-4 md:justify-end  ${
               headShotCollapsed ? 'z-40' : 'z-0'
             }`}
           >
@@ -66,7 +66,7 @@ export const InteractiveSubHeader = ({}) => {
                     <span
                       className={`flex font-primary  ${
                         index < 2
-                          ? 'font-primary text-8xl font-extrabold'
+                          ? 'font-primary text-7xl font-extrabold md:text-8xl'
                           : 'mt-2 text-5xl font-light'
                       }`}
                     >
@@ -100,7 +100,7 @@ export const InteractiveSubHeader = ({}) => {
             </span>
           </div>
         </div>
-        <div className="mr-16 basis-[60%]">
+        <div className="h-1/2 w-full md:h-full md:w-1/2">
           <HeadShot
             headShotImage={headShotImage}
             setHeadShotImage={setHeadShotImage}
