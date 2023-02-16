@@ -28,11 +28,11 @@ export default function Home() {
           <ThemeSelector />
         </Header>
         <div className="h-full">
-          <div className="pointer-events-auto h-3/4">
+          <div className="pointer-events-auto h-5/6">
             {/* <CutoutShape /> */}
             <InteractiveSubHeader />
           </div>
-          <div className="h-1/4 bg-primary"></div>
+          <div className="h-1/6 bg-primary"></div>
         </div>
 
         {/* <div className="relative flex flex-col text-black"></div>
