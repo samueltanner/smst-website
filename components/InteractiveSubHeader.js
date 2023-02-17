@@ -1,7 +1,7 @@
 import { useRef, useState, Fragment, useEffect, useContext } from 'react'
 import { motion } from 'framer-motion'
 import { MoveableLetter } from './MoveableLetter'
-import { CutoutShape } from './CutoutShape'
+import { CutoutShape } from './outlines/CutoutShape'
 import { HeadShot } from './HeadShot'
 import ThemeContext from './theme/themeContext'
 
@@ -18,11 +18,11 @@ export const InteractiveSubHeader = ({}) => {
   useEffect(() => {
     if (theme !== 'mark') {
       setHeadShotImage('sam')
-      setHeaderArray(['SAM', 'TANNER'])
+      setHeaderArray(['SAM', 'TANNER', 'Designer', 'Developer', 'Builder'])
     }
     if (theme === 'mark') {
       setHeadShotImage('mark')
-      setHeaderArray(['MARK', '(MY DOG)'])
+      setHeaderArray(['MARK', '(MY DOG)', "bark", "woof"])
     }
   }, [theme])
 
@@ -62,28 +62,30 @@ export const InteractiveSubHeader = ({}) => {
             <span className="flex w-full flex-col">
               {headerArray.map((word, index) => {
                 return (
-                  <Fragment key={`${JSON.stringify(dimensions)}-${index}`}>
+                  <span key={`${JSON.stringify(dimensions)}-${index}`}>
                     <span
                       className={`flex font-primary  ${
                         index < 2
                           ? 'font-primary text-7xl font-extrabold md:text-8xl'
-                          : 'mt-2 text-5xl font-light'
+                          : 'mt-4 text-6xl font-light'
                       }`}
                     >
-                      {word.split('').map((letter, letterIndex) => {
-                        return (
-                          <Fragment key={`${headShotImage}-${letterIndex}`}>
-                            <MoveableLetter
-                              constraintsRef={constraintsRef}
-                              letter={letter}
-                            />
-                          </Fragment>
-                        )
-                      })}
+                      <span className="flex">
+                        {word.split('').map((letter, letterIndex) => {
+                          return (
+                            <Fragment key={`${headShotImage}-${letterIndex}`}>
+                              <MoveableLetter
+                                constraintsRef={constraintsRef}
+                                letter={letter}
+                              />
+                            </Fragment>
+                          )
+                        })}
+                      </span>
                     </span>
-                    {/* {index === 1 && (
+                    {index === 1 && (
                       <motion.div
-                        className=" w-[240px] border-b-[10px] border-primary pt-0.5"
+                        className="w-[420px] border-b-[16px] border-secondary pt-2"
                         drag
                         dragConstraints={constraintsRef}
                         dragTransition={{
@@ -93,8 +95,8 @@ export const InteractiveSubHeader = ({}) => {
                         dragElastic={0.5}
                         whileTap={{ cursor: 'grabbing' }}
                       />
-                    )} */}
-                  </Fragment>
+                    )}
+                  </span>
                 )
               })}
             </span>
