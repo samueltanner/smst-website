@@ -9,7 +9,7 @@ export const SectionAdvancer = ({ sectionIndex, pages, setSectionIndex }) => {
           onClick={() => setSectionIndex(index)}
           className={`h-3 w-3 rounded-full ${
             index === sectionIndex ? 'bg-secondary' : 'bg-offWhite '
-          } ring-2 ring-primary ring-offset-2 ring-offset-offWhite hover:drop-shadow-sm`}
+          } ring-2 ring-primary ring-offset-2 ring-offset-offWhite transition duration-100 ease-in-out hover:scale-[110%] hover:transform hover:drop-shadow-sm`}
         />
       ))}
       {/* <span className="h-3 w-3 rounded-full ring-2 ring-primary" />
