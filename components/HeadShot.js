@@ -18,7 +18,6 @@ export const HeadShot = ({
   const collapseButtonRef = useRef(null)
 
   const handleRotate = () => {
-    console.log('rotate')
     setDegree(degree + 30)
   }
 

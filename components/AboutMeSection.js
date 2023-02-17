@@ -1,13 +1,14 @@
 import { SectionAdvancer } from './SectionAdvancer'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import ThemeContext from './theme/themeContext'
 import { ImageWithOverlay } from '../components/outlines/ImageWithOverlay'
 import { MeOutline } from '../components/outlines/MeOutline'
 import { UpOutline } from '../components/outlines/UpOutline'
 import { MarkNMe } from '../components/outlines/MarkNMe'
 import { TessNMe } from '../components/outlines/TessNMe'
-// import { variants } from '../lib/data'
+import { MarkHatOutline } from './outlines/MarkHatOutline'
 
-const variants = [
+const sam_variants = [
   {
     title: 'A Bit About Me',
     body: [
@@ -103,8 +104,34 @@ const variants = [
   },
 ]
 
+const mark_variants = [
+  {
+    title: 'Oh Hi Mark',
+    body: [
+      'My name is Mark. I am an 80 lb. Golden Retriever.',
+      "I love eating goose poop. I am lazy as they come and I am not too bright but I promise I love you so much and I don't even know you yet!",
+    ],
+    image: (
+      <ImageWithOverlay
+        src="/img/markhat.png"
+        className={'-rotate-4 h-20 transform object-contain p-2'}
+      >
+        <MarkHatOutline
+          className={
+            'absolute h-full w-full rotate-3 transform fill-current object-contain p-2 text-yellow-800 opacity-40'
+          }
+        />
+      </ImageWithOverlay>
+    ),
+    position: '-bottom-4 -right-8',
+  },
+]
+
 export const AboutMeSection = () => {
   const [sectionIndex, setSectionIndex] = useState(0)
+  const { theme } = useContext(ThemeContext)
+
+  const variants = theme === 'mark' ? mark_variants : sam_variants
 
   if (!variants) return <></>
 
@@ -112,14 +139,14 @@ export const AboutMeSection = () => {
     <div className="relative flex h-screen flex-col items-center justify-center bg-offWhite p-24">
       <div className="relative grid h-1/2 w-full grid-cols-2 bg-primary bg-opacity-30 p-0">
         <p
-          className={`absolute ${variants[sectionIndex].position} font-primary text-6xl font-extrabold text-primary`}
+          className={`absolute ${variants[sectionIndex]?.position} font-primary text-6xl font-extrabold text-primary`}
           // variants={textVariants}
           initial="initial"
           animate={sectionIndex === 1 ? 'target' : 'initial'}
           exit="initial"
           transition={{ duration: 0.5 }}
         >
-          {variants[sectionIndex].title}
+          {variants[sectionIndex]?.title}
         </p>
         <div
           className={`text-md flex flex-col items-center justify-center gap-4 font-primary font-light text-zinc-900 ${
@@ -127,7 +154,7 @@ export const AboutMeSection = () => {
           }`}
         >
           <div>
-            {variants[sectionIndex].body.map((paragraph, index) => (
+            {variants[sectionIndex]?.body.map((paragraph, index) => (
               <div className="mb-4" key={index}>
                 <p className="">{paragraph}</p>
               </div>
@@ -135,7 +162,7 @@ export const AboutMeSection = () => {
             {variants[sectionIndex]?.button && (
               <button className="group absolute bottom-28  flex w-1/2 justify-center text-justify font-primary font-extrabold text-primary transition duration-100 ease-in-out hover:scale-105">
                 <p className="z-10 border-b-[4px] border-b-secondary border-opacity-60 text-justify group-hover:border-opacity-100">
-                  {variants[sectionIndex].button.text}
+                  {variants[sectionIndex]?.button.text}
                 </p>
               </button>
             )}
@@ -146,7 +173,7 @@ export const AboutMeSection = () => {
             sectionIndex % 2 === 0 ? 'order-2' : 'order-1'
           } flex items-center justify-center pt-6`}
         >
-          {variants[sectionIndex].image}
+          {variants[sectionIndex]?.image}
         </div>
       </div>
 

@@ -8,6 +8,7 @@ export const ImageWithOverlay = ({ src, children, className }) => {
         alt="Sam Tanner"
         fill
         className={className}
+        priority
         sizes="(max-width: 768px) 100vw, 768px"
       />
       {children}
