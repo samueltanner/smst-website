@@ -5,7 +5,8 @@ import { useState, useEffect, useRef } from 'react'
 import { Icon } from '../components/Icon'
 import { ThemeSelector } from '../components/theme/ThemeSelector'
 import { getThemeFromLS, setThemeToLS } from '../lib/storage'
-import { Section } from '../components/Section'
+import { AboutMeSection } from '../components/AboutMeSection'
+import { SectionAdvancer } from '../components/SectionAdvancer'
 export default function Home() {
   const [theme, setTheme] = useState('default')
   const [headerVisible, setHeaderVisible] = useState(true)
@@ -63,8 +64,11 @@ export default function Home() {
           </div>
         </div>
         <div ref={aboutMeRef}>
-          <Section />
+          <AboutMeSection />
         </div>
+        {/* <div>
+          <AboutMeSection />
+        </div> */}
         {/* <div className="relative flex flex-col text-black"></div>
         <div className="h-full w-full bg-primary pt-4">
           <div className=" bottom-0 border-b-[4px] border-secondary sm:mr-[290px] " />
