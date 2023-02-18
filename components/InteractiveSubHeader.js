@@ -22,7 +22,7 @@ export const InteractiveSubHeader = ({}) => {
     }
     if (theme === 'mark') {
       setHeadShotImage('mark')
-      setHeaderArray(['MARK', '(MY DOG)', "bark", "woof"])
+      setHeaderArray(['MARK', '(MY DOG)', 'bark', 'woof'])
     }
   }, [theme])
 
@@ -66,8 +66,8 @@ export const InteractiveSubHeader = ({}) => {
                     <span
                       className={`flex font-primary  ${
                         index < 2
-                          ? 'font-primary text-7xl font-extrabold md:text-8xl'
-                          : 'mt-4 text-6xl font-light'
+                          ? 'font-primary text-5xl font-extrabold md:text-8xl'
+                          : 'mt-2 text-3xl font-light md:mt-4 md:text-6xl'
                       }`}
                     >
                       <span className="flex">
@@ -85,7 +85,7 @@ export const InteractiveSubHeader = ({}) => {
                     </span>
                     {index === 1 && (
                       <motion.div
-                        className="w-[420px] border-b-[16px] border-secondary pt-2"
+                        className="w-[220px] border-b-[8px] border-secondary pt-2 md:w-[420px] md:border-b-[16px]"
                         drag
                         dragConstraints={constraintsRef}
                         dragTransition={{
