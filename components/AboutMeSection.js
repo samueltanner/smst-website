@@ -149,7 +149,7 @@ export const AboutMeSection = () => {
     <div className="relative flex h-screen flex-col items-center justify-center bg-offWhite px-8 py-16 md:p-24">
       <div className="] relative z-10 grid h-fit min-h-[50%] w-full bg-primary bg-opacity-30 p-8 md:max-h-full md:grid-cols-2 md:p-0 md:py-12">
         <p
-          className={`absolute ${variants[sectionIndex]?.position} whitespace-nowrap font-primary text-4xl font-extrabold text-primary md:text-6xl`}
+          className={`absolute ${variants[sectionIndex]?.position} whitespace-nowrap font-primary text-4xl font-extrabold text-secondary md:text-6xl`}
         >
           {variants[sectionIndex]?.title}
         </p>
@@ -168,10 +168,10 @@ export const AboutMeSection = () => {
             ))}
             {variants[sectionIndex]?.button && (
               <button
-                className="wp group absolute inset-x-0 bottom-0 flex max-w-full justify-center pb-3 text-justify font-primary font-extrabold text-primary transition duration-100 ease-in-out hover:scale-105"
+                className="wp group absolute inset-x-0 bottom-0 flex max-w-full justify-center pb-3 text-justify font-primary font-extrabold text-secondary transition duration-100 ease-in-out hover:scale-105"
                 onClick={() => router.push(variants[sectionIndex]?.button.link)}
               >
-                <p className="z-10 border-b-[4px] border-b-secondary border-opacity-60 text-justify group-hover:border-opacity-100">
+                <p className="z-10 border-b-[4px] border-b-primary border-opacity-60 text-justify group-hover:border-opacity-100">
                   {variants[sectionIndex]?.button.text}
                 </p>
               </button>

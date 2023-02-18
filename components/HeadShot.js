@@ -27,8 +27,6 @@ export const HeadShot = ({
 
   const { setTheme } = useContext(ThemeContext)
 
-  console.log(headShotCollapsed)
-
   return (
     <div className="flex h-full w-full items-end pr-16">
       <div className="group relative flex h-[80%] w-full items-center justify-center">

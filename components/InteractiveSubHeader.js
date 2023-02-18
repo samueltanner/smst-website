@@ -66,7 +66,13 @@ export const InteractiveSubHeader = ({}) => {
                           : 'mt-2 text-3xl font-light md:mt-4 md:text-6xl'
                       }`}
                     >
-                      <span className="flex">
+                      <motion.span
+                        className="flex"
+                        key={theme}
+                        initial={{ opacity: headShotCollapsed ? 1 : 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5 }}
+                      >
                         {word.split('').map((letter, letterIndex) => {
                           return (
                             <Fragment key={`${headShotImage}-${letterIndex}`}>
@@ -77,7 +83,7 @@ export const InteractiveSubHeader = ({}) => {
                             </Fragment>
                           )
                         })}
-                      </span>
+                      </motion.span>
                     </span>
                     {index === 1 && (
                       <motion.div
