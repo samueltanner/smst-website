@@ -1,5 +1,5 @@
 import { SectionAdvancer } from './SectionAdvancer'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import ThemeContext from './theme/themeContext'
 import { ImageWithOverlay } from '../components/outlines/ImageWithOverlay'
 import { MeOutline } from '../components/outlines/MeOutline'
@@ -27,7 +27,7 @@ const sam_variants = [
         />
       </ImageWithOverlay>
     ),
-    position: '-top-8 -right-8',
+    position: '-top-6 right-2 md:-top-8 md:-right-8',
     button: {
       text: 'See My Resume',
       link: '/resume',
@@ -43,23 +43,23 @@ const sam_variants = [
     image: (
       <ImageWithOverlay
         src="/img/UpThreshold.png"
-        className={'h-20 -rotate-6 transform object-contain p-10'}
+        className={'h-20 -rotate-6 transform object-contain p-4 md:-ml-4'}
       >
         <UpOutline
           className={
-            'absolute h-full w-full -rotate-2 transform fill-current object-contain p-10 text-emerald-900 opacity-40'
+            'absolute -ml-4 h-full w-full -rotate-2 transform fill-current object-contain p-4 text-emerald-900 opacity-40'
           }
         />
       </ImageWithOverlay>
     ),
-    position: '-top-8 -left-8',
+    position: '-top-6 right-2 md:-top-8 md:-left-8',
     button: {
       text: 'Check Out My Portfolio',
       link: '/portfolio',
     },
   },
   {
-    title: 'What I Am All About',
+    title: 'My Hobbies',
     body: [
       'I am an active and social guy. I love to explore new places, and meet new people. I grew up backpacking through the Cascades and the Olympics with my dad and to this day, backpacking is one of my favorite things to do. To date, a few of my favorite places I have hiked are the South Island of New Zealand, the Albanian Alps, and the North Cascades.',
       'When I am not in the back country, I like to spend my time traveling with my fiance, Tess, and our dog, Mark. We are a food-obsessed trio and we always have a trip on the books so we can see new cities, try new restaurants and cuisines, and catch our favorite bands in concert.',
@@ -67,16 +67,16 @@ const sam_variants = [
     image: (
       <ImageWithOverlay
         src="/img/tessNME.png"
-        className={'rotate-4 h-20 transform object-contain p-2'}
+        className={'rotate-4 transform object-contain'}
       >
         <TessNMe
           className={
-            'absolute h-full w-full -rotate-2 transform fill-current object-contain p-2 text-orange-500 opacity-40'
+            'absolute h-full w-full -rotate-2 transform fill-current object-contain text-orange-500 opacity-40'
           }
         />
       </ImageWithOverlay>
     ),
-    position: '-bottom-4 -left-8',
+    position: '-top-6 right-2 md:-bottom-4 md:-left-8 md:top-auto',
   },
   {
     title: "What's Next?",
@@ -87,16 +87,16 @@ const sam_variants = [
     image: (
       <ImageWithOverlay
         src="/img/marknme.png"
-        className={'h-20 -rotate-2 transform object-contain p-10'}
+        className={'h-20 -rotate-2 transform object-contain'}
       >
         <MarkNMe
           className={
-            'absolute h-full w-full rotate-2 transform fill-current object-contain p-10 text-yellow-600 opacity-40'
+            'absolute h-full w-full rotate-2 transform fill-current object-contain text-yellow-600 opacity-40'
           }
         />
       </ImageWithOverlay>
     ),
-    position: '-bottom-4 -right-8',
+    position: '-top-6 right-2 md:-bottom-4 md:-right-8',
     button: {
       text: 'Reach Out To Me!',
       link: '/contact',
@@ -123,44 +123,50 @@ const mark_variants = [
         />
       </ImageWithOverlay>
     ),
-    position: '-bottom-4 -right-8',
+    position: '-top-6 right-2 md:-bottom-4 md:-right-8',
   },
 ]
 
 export const AboutMeSection = () => {
   const [sectionIndex, setSectionIndex] = useState(0)
+  const [variants, setVariants] = useState(sam_variants)
   const { theme } = useContext(ThemeContext)
 
-  const variants = theme === 'mark' ? mark_variants : sam_variants
+  useEffect(() => {
+    if (theme === 'mark') {
+      setVariants(mark_variants)
+    } else {
+      setVariants(sam_variants)
+    }
+  }, [theme])
+
+  // const variants = theme === 'mark' ? mark_variants : sam_variants
 
   if (!variants) return <></>
 
   return (
-    <div className="relative flex h-screen flex-col items-center justify-center bg-offWhite p-24">
-      <div className="relative grid h-1/2 w-full grid-cols-2 bg-primary bg-opacity-30 p-0">
+    <div className="relative flex h-screen flex-col items-center justify-center bg-offWhite px-8 py-16 md:p-24">
+      <div className="] relative z-10 grid h-fit min-h-[50%] w-full bg-primary bg-opacity-30 p-8 md:max-h-full md:grid-cols-2 md:p-0 md:py-12">
         <p
-          className={`absolute ${variants[sectionIndex]?.position} font-primary text-6xl font-extrabold text-primary`}
-          // variants={textVariants}
-          initial="initial"
-          animate={sectionIndex === 1 ? 'target' : 'initial'}
-          exit="initial"
-          transition={{ duration: 0.5 }}
+          className={`absolute ${variants[sectionIndex]?.position} whitespace-nowrap font-primary text-4xl font-extrabold text-primary md:text-6xl`}
         >
           {variants[sectionIndex]?.title}
         </p>
         <div
-          className={`text-md flex flex-col items-center justify-center gap-4 font-primary font-light text-zinc-900 ${
-            sectionIndex % 2 === 0 ? 'order-1 -ml-8' : 'order-2 -mr-12'
+          className={`text-md mb-4 mt-4 flex flex-col justify-center gap-4 overflow-y-scroll font-primary font-light text-zinc-900 md:items-center md:justify-center ${
+            sectionIndex % 2 === 0
+              ? 'md:order-1 md:-ml-8'
+              : 'md:order-2 md:-mr-12'
           }`}
         >
-          <div>
+          <div className="z-10">
             {variants[sectionIndex]?.body.map((paragraph, index) => (
               <div className="mb-4" key={index}>
                 <p className="">{paragraph}</p>
               </div>
             ))}
             {variants[sectionIndex]?.button && (
-              <button className="group absolute bottom-28  flex w-1/2 justify-center text-justify font-primary font-extrabold text-primary transition duration-100 ease-in-out hover:scale-105">
+              <button className="wp group absolute inset-x-0 bottom-0 flex max-w-full justify-center pb-3 text-justify font-primary font-extrabold text-primary transition duration-100 ease-in-out hover:scale-105 ">
                 <p className="z-10 border-b-[4px] border-b-secondary border-opacity-60 text-justify group-hover:border-opacity-100">
                   {variants[sectionIndex]?.button.text}
                 </p>
@@ -169,15 +175,22 @@ export const AboutMeSection = () => {
           </div>
         </div>
         <div
-          className={`${
-            sectionIndex % 2 === 0 ? 'order-2' : 'order-1'
-          } flex items-center justify-center pt-6`}
+          className={`hidden md:flex ${
+            sectionIndex % 2 === 0 ? 'md:order-2' : 'md:order-1'
+          } flex items-center justify-center`}
         >
           {variants[sectionIndex]?.image}
         </div>
       </div>
 
-      <div className="pt-8">
+      <div
+        className={`absolute z-0 flex h-3/4 w-full p-4 opacity-20 md:hidden ${
+          sectionIndex % 2 === 0 ? 'md:order-2' : 'md:order-1'
+        } flex items-center justify-center`}
+      >
+        {variants[sectionIndex]?.image}
+      </div>
+      <div className="relative bottom-6 z-20 mt-4 pt-8">
         <SectionAdvancer
           pages={variants.length}
           sectionIndex={sectionIndex}
