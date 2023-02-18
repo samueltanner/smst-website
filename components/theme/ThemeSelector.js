@@ -30,7 +30,17 @@ export const ThemeSelector = ({ headerVisible }) => {
     },
   ]
   return (
-    <div className="relative z-[100]">
+    <motion.div
+      className="relative z-[100]"
+      key={headerVisible}
+      initial={{ opacity: 0 }}
+      animate={{
+        opacity: 1,
+      }}
+      exit={{
+        opacity: 0,
+      }}
+    >
       <div
         className={`${
           headerVisible
@@ -63,17 +73,24 @@ export const ThemeSelector = ({ headerVisible }) => {
                         setTheme(theme.name)
                         setThemeDropdownOpen(false)
                       }}
-                      initial={{ opacity: 0, y: -10, rotate: 45 }}
+                      initial={{
+                        opacity: 0,
+                        y: headerVisible ? 0 : -10,
+                        x: !headerVisible ? 0 : 10,
+                        rotate: 45,
+                      }}
                       animate={{
                         opacity: 1,
                         y: 0,
+                        x: 0,
                         transition: {
                           delay: 0.1,
                         },
                       }}
                       exit={{
                         opacity: 0,
-                        y: -25 * (index + 1),
+                        y: !headerVisible && -20 * (index + 1),
+                        x: headerVisible && (index === 1 ? 40 : 30),
                         transition: {
                           delay: 0.1,
                           type: 'anticipate',
@@ -88,6 +105,6 @@ export const ThemeSelector = ({ headerVisible }) => {
           )}
         </AnimatePresence>
       </div>
-    </div>
+    </motion.div>
   )
 }
