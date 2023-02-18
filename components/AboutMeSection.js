@@ -1,5 +1,5 @@
 import { SectionAdvancer } from './SectionAdvancer'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import ThemeContext from './theme/themeContext'
 import { ImageWithOverlay } from '../components/outlines/ImageWithOverlay'
 import { MeOutline } from '../components/outlines/MeOutline'
@@ -129,9 +129,18 @@ const mark_variants = [
 
 export const AboutMeSection = () => {
   const [sectionIndex, setSectionIndex] = useState(0)
+  const [variants, setVariants] = useState(sam_variants)
   const { theme } = useContext(ThemeContext)
 
-  const variants = theme === 'mark' ? mark_variants : sam_variants
+  useEffect(() => {
+    if (theme === 'mark') {
+      setVariants(mark_variants)
+    } else {
+      setVariants(sam_variants)
+    }
+  }, [theme])
+
+  // const variants = theme === 'mark' ? mark_variants : sam_variants
 
   if (!variants) return <></>
 
