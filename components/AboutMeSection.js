@@ -136,7 +136,7 @@ export const AboutMeSection = () => {
   if (!variants) return <></>
 
   return (
-    <div className="relative flex h-screen flex-col items-center justify-center bg-offWhite px-8 py-16 md:justify-center md:p-24">
+    <div className="relative flex h-screen flex-col items-center justify-center bg-offWhite px-8 py-16 md:p-24">
       <div className="] relative z-10 grid h-fit min-h-[50%] w-full bg-primary bg-opacity-30 p-8 md:max-h-full md:grid-cols-2 md:p-0 md:py-12">
         <p
           className={`absolute ${variants[sectionIndex]?.position} whitespace-nowrap font-primary text-4xl font-extrabold text-primary md:text-6xl`}
@@ -144,7 +144,7 @@ export const AboutMeSection = () => {
           {variants[sectionIndex]?.title}
         </p>
         <div
-          className={`text-md mb-4 mt-4 flex flex-col justify-start gap-4 overflow-y-scroll font-primary font-light text-zinc-900 md:items-center md:justify-center ${
+          className={`text-md mb-4 mt-4 flex flex-col justify-center gap-4 overflow-y-scroll font-primary font-light text-zinc-900 md:items-center md:justify-center ${
             sectionIndex % 2 === 0
               ? 'md:order-1 md:-ml-8'
               : 'md:order-2 md:-mr-12'
