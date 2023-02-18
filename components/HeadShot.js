@@ -23,9 +23,11 @@ export const HeadShot = ({
 
   useEffect(() => {
     setHeadShotCollapsed(false)
-  }, [headShotImage])
+  }, [headShotImage, setHeadShotCollapsed])
 
   const { setTheme } = useContext(ThemeContext)
+
+  console.log(headShotCollapsed)
 
   return (
     <div className="flex h-full w-full items-end pr-16">

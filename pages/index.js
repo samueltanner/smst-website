@@ -14,7 +14,6 @@ export default function Home() {
       </div>
       <div className="h-full">
         <div className="pointer-events-auto h-full pb-20">
-          {/* <CutoutShape /> */}
           <InteractiveSubHeader />
           <div className="flex h-20 items-center justify-center bg-primary pb-4 font-primary text-3xl text-offWhite">
             <button

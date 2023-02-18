@@ -23,8 +23,6 @@ export const Header = ({ children, sticky = false }) => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  console.log('headerVisible', headerVisible)
-
   const underline = (path) =>
     `border-b-[4px] mt-1 pb-0.5 ${
       path === router.pathname
