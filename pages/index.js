@@ -28,19 +28,11 @@ export default function Home() {
 
   const executeScroll = (ref) => ref.current.scrollIntoView()
 
-  const { theme } = useContext(ThemeContext)
-
   return (
     // <ThemeProvider value={{ theme, setTheme }}>
     <div className={`h-screen pb-20`}>
       <div ref={headerRef}>
-        <Header>
-          <Icon
-            className={'h-8 w-8 fill-current text-white antialiased'}
-            icon={theme}
-          />
-          <ThemeSelector headerVisible={headerVisible} />
-        </Header>
+        <Header headerVisible={headerVisible} />
       </div>
       <div className="h-full">
         <div className="pointer-events-auto h-full pb-20">
