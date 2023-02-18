@@ -1,7 +1,6 @@
 import { useRef, useState, Fragment, useEffect, useContext } from 'react'
 import { motion } from 'framer-motion'
 import { MoveableLetter } from './MoveableLetter'
-import { CutoutShape } from './outlines/CutoutShape'
 import { HeadShot } from './HeadShot'
 import ThemeContext from './theme/themeContext'
 
@@ -10,7 +9,6 @@ export const InteractiveSubHeader = ({}) => {
   const [headerArray, setHeaderArray] = useState([])
   const constraintsRef = useRef(null)
   const [dimensions, setDimensions] = useState()
-  const textRef = useRef(null)
   const [headShotCollapsed, setHeadShotCollapsed] = useState(false)
 
   const { theme } = useContext(ThemeContext)
@@ -18,7 +16,7 @@ export const InteractiveSubHeader = ({}) => {
   useEffect(() => {
     if (theme !== 'mark') {
       setHeadShotImage('sam')
-      setHeaderArray(['SAM', 'TANNER', 'Designer', 'Developer', 'Builder'])
+      setHeaderArray(['SAM', 'TANNER', 'Developer', 'Designer', 'Builder'])
     }
     if (theme === 'mark') {
       setHeadShotImage('mark')
@@ -47,8 +45,6 @@ export const InteractiveSubHeader = ({}) => {
 
   return (
     <div className="relative h-full w-full overflow-y-hidden">
-      {/* <CutoutShape /> */}
-
       <div className="relative flex h-full w-full flex-col justify-between  md:flex-row">
         <div
           className="z-50 h-1/2 w-full md:relative  md:h-full md:w-1/2"
@@ -70,7 +66,13 @@ export const InteractiveSubHeader = ({}) => {
                           : 'mt-2 text-3xl font-light md:mt-4 md:text-6xl'
                       }`}
                     >
-                      <span className="flex">
+                      <motion.span
+                        className="flex"
+                        key={theme}
+                        initial={{ opacity: headShotCollapsed ? 1 : 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5 }}
+                      >
                         {word.split('').map((letter, letterIndex) => {
                           return (
                             <Fragment key={`${headShotImage}-${letterIndex}`}>
@@ -81,7 +83,7 @@ export const InteractiveSubHeader = ({}) => {
                             </Fragment>
                           )
                         })}
-                      </span>
+                      </motion.span>
                     </span>
                     {index === 1 && (
                       <motion.div
@@ -102,7 +104,12 @@ export const InteractiveSubHeader = ({}) => {
             </span>
           </div>
         </div>
-        <div className="h-1/2 w-full md:h-full md:w-1/2">
+        <motion.div
+          className="h-1/2 w-full md:h-full md:w-1/2"
+          initial={{ opacity: headShotCollapsed ? 1 : 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
           <HeadShot
             headShotImage={headShotImage}
             setHeadShotImage={setHeadShotImage}
@@ -110,7 +117,7 @@ export const InteractiveSubHeader = ({}) => {
             headShotCollapsed={headShotCollapsed}
             setHeadShotCollapsed={setHeadShotCollapsed}
           />
-        </div>
+        </motion.div>
       </div>
     </div>
   )

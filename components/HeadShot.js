@@ -23,7 +23,7 @@ export const HeadShot = ({
 
   useEffect(() => {
     setHeadShotCollapsed(false)
-  }, [headShotImage])
+  }, [headShotImage, setHeadShotCollapsed])
 
   const { setTheme } = useContext(ThemeContext)
 
