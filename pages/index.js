@@ -1,38 +1,16 @@
 import { Header } from '../components/Header'
 import { InteractiveSubHeader } from '../components/InteractiveSubHeader'
-import { ThemeProvider } from '../components/theme/themeContext'
-import { useState, useEffect, useRef, useContext } from 'react'
-import { Icon } from '../components/Icon'
-import { ThemeSelector } from '../components/theme/ThemeSelector'
-import { getThemeFromLS, setThemeToLS } from '../lib/storage'
+import { useRef } from 'react'
 import { AboutMeSection } from '../components/AboutMeSection'
-import { SectionAdvancer } from '../components/SectionAdvancer'
-import ThemeContext from '../components/theme/themeContext'
 export default function Home() {
-  const [headerVisible, setHeaderVisible] = useState(true)
-  const headerRef = useRef(null)
   const aboutMeRef = useRef(null)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (headerRef.current) {
-        const { top, bottom } = headerRef.current.getBoundingClientRect()
-        const isVisible = bottom > 0
-        setHeaderVisible(isVisible)
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
   const executeScroll = (ref) => ref.current.scrollIntoView()
 
   return (
-    // <ThemeProvider value={{ theme, setTheme }}>
     <div className={`h-screen pb-20`}>
-      <div ref={headerRef}>
-        <Header headerVisible={headerVisible} />
+      <div>
+        <Header />
       </div>
       <div className="h-full">
         <div className="pointer-events-auto h-full pb-20">

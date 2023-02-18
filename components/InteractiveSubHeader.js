@@ -18,7 +18,7 @@ export const InteractiveSubHeader = ({}) => {
   useEffect(() => {
     if (theme !== 'mark') {
       setHeadShotImage('sam')
-      setHeaderArray(['SAM', 'TANNER', 'Designer', 'Developer', 'Builder'])
+      setHeaderArray(['SAM', 'TANNER', 'Developer', 'Designer', 'Builder'])
     }
     if (theme === 'mark') {
       setHeadShotImage('mark')

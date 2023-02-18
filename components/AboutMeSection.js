@@ -7,6 +7,8 @@ import { UpOutline } from '../components/outlines/UpOutline'
 import { MarkNMe } from '../components/outlines/MarkNMe'
 import { TessNMe } from '../components/outlines/TessNMe'
 import { MarkHatOutline } from './outlines/MarkHatOutline'
+import { useRouter } from 'next/router'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const sam_variants = [
   {
@@ -131,6 +133,7 @@ export const AboutMeSection = () => {
   const [sectionIndex, setSectionIndex] = useState(0)
   const [variants, setVariants] = useState(sam_variants)
   const { theme } = useContext(ThemeContext)
+  const router = useRouter()
 
   useEffect(() => {
     if (theme === 'mark') {
@@ -139,8 +142,6 @@ export const AboutMeSection = () => {
       setVariants(sam_variants)
     }
   }, [theme])
-
-  // const variants = theme === 'mark' ? mark_variants : sam_variants
 
   if (!variants) return <></>
 
@@ -166,7 +167,10 @@ export const AboutMeSection = () => {
               </div>
             ))}
             {variants[sectionIndex]?.button && (
-              <button className="wp group absolute inset-x-0 bottom-0 flex max-w-full justify-center pb-3 text-justify font-primary font-extrabold text-primary transition duration-100 ease-in-out hover:scale-105 ">
+              <button
+                className="wp group absolute inset-x-0 bottom-0 flex max-w-full justify-center pb-3 text-justify font-primary font-extrabold text-primary transition duration-100 ease-in-out hover:scale-105"
+                onClick={() => router.push(variants[sectionIndex]?.button.link)}
+              >
                 <p className="z-10 border-b-[4px] border-b-secondary border-opacity-60 text-justify group-hover:border-opacity-100">
                   {variants[sectionIndex]?.button.text}
                 </p>
@@ -174,22 +178,32 @@ export const AboutMeSection = () => {
             )}
           </div>
         </div>
-        <div
+        <motion.div
+          key={sectionIndex}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.25 }}
           className={`hidden md:flex ${
             sectionIndex % 2 === 0 ? 'md:order-2' : 'md:order-1'
           } flex items-center justify-center`}
         >
           {variants[sectionIndex]?.image}
-        </div>
+        </motion.div>
       </div>
 
-      <div
+      <motion.div
         className={`absolute z-0 flex h-3/4 w-full p-4 opacity-20 md:hidden ${
           sectionIndex % 2 === 0 ? 'md:order-2' : 'md:order-1'
         } flex items-center justify-center`}
+        key={sectionIndex}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.2 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.25 }}
       >
         {variants[sectionIndex]?.image}
-      </div>
+      </motion.div>
       <div className="relative bottom-6 z-20 mt-4 pt-8">
         <SectionAdvancer
           pages={variants.length}

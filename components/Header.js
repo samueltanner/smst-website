@@ -1,34 +1,55 @@
 import { Icon } from './Icon'
 import { ThemeSelector } from './theme/ThemeSelector'
-import { useContext } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import ThemeContext from './theme/themeContext'
 import { useRouter } from 'next/router'
 
-export const Header = ({ children, headerVisible, sticky = false }) => {
+export const Header = ({ children, sticky = false }) => {
+  const [headerVisible, setHeaderVisible] = useState(true)
   const router = useRouter()
+  const headerRef = useRef(null)
   const { theme } = useContext(ThemeContext)
 
-  console.log(router.pathname)
+  useEffect(() => {
+    const handleScroll = () => {
+      if (headerRef.current) {
+        const { top, bottom } = headerRef.current.getBoundingClientRect()
+        const isVisible = bottom > 0
+        setHeaderVisible(isVisible)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  console.log('headerVisible', headerVisible)
+
   const underline = (path) =>
-    `border-b-[4px] ${
-      path === router.pathname ? 'border-secondary' : 'border-transparent'
-    }`
+    `border-b-[4px] mt-1 pb-0.5 ${
+      path === router.pathname
+        ? 'border-secondary'
+        : 'border-transparent hover:border-secondary hover:border-opacity-30 '
+    } transition ease-in-out duration-300`
 
   return (
-    <div className={`${sticky ? 'sticky top-0' : 'relative'} bg-primary`}>
+    <div
+      className={`${sticky ? 'sticky top-0' : 'relative'} bg-primary`}
+      ref={headerRef}
+    >
       <div className="z-50 flex h-20 items-center justify-between px-6">
         <Icon
           className={'h-8 w-8 fill-current text-white antialiased'}
           icon={theme}
         />
-        <div className="ml-10 flex w-full justify-start gap-8 font-bold text-offWhite">
+        <div className="ml-10 flex w-full justify-start gap-8 font-normal text-offWhite">
           <button
             onClick={() => {
               router.push('/')
             }}
             className={`${underline('/')}`}
           >
-            Home
+            home
           </button>
           <button
             onClick={() => {
@@ -36,7 +57,7 @@ export const Header = ({ children, headerVisible, sticky = false }) => {
             }}
             className={`${underline('/resume')}`}
           >
-            Resume
+            resume
           </button>
           <button
             onClick={() => {
@@ -44,7 +65,7 @@ export const Header = ({ children, headerVisible, sticky = false }) => {
             }}
             className={`${underline('/portfolio')}`}
           >
-            Portfolio
+            portfolio
           </button>
         </div>
         <ThemeSelector headerVisible={headerVisible} />
