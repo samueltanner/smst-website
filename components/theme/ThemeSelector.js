@@ -3,7 +3,7 @@ import { useState, useContext } from 'react'
 import ThemeContext from './themeContext'
 
 export const ThemeSelector = ({ headerVisible }) => {
-  const [themeDropdownOpen, setThemeDropdownOpen] = useState(false)
+  const [themeDropdownOpen, setThemeDropdownOpen] = useState(true)
   const { theme: globalTheme, setTheme } = useContext(ThemeContext)
 
   const themeList = [
@@ -34,12 +34,12 @@ export const ThemeSelector = ({ headerVisible }) => {
       <div
         className={`${
           headerVisible
-            ? ' absolute -top-4 right-0'
-            : 'fixed bottom-6 right-6 rotate-180'
-        } flex flex-col self-center justify-self-center`}
+            ? ' absolute -top-4 right-0 flex-row-reverse'
+            : 'fixed bottom-6 right-6 rotate-180 flex-col'
+        } flex self-center justify-self-center`}
       >
         <div
-          className="relative z-40 flex h-8 w-8 cursor-pointer items-center justify-center rounded-md bg-white ring-offset-primary drop-shadow-md hover:bg-zinc-200"
+          className="relative z-40 flex h-8 w-8 flex-none cursor-pointer items-center justify-center rounded-md bg-white ring-offset-primary drop-shadow-md hover:bg-zinc-200"
           onClick={() => {
             setThemeDropdownOpen(!themeDropdownOpen)
           }}
@@ -48,7 +48,11 @@ export const ThemeSelector = ({ headerVisible }) => {
         </div>
         <AnimatePresence>
           {themeDropdownOpen && (
-            <div className="flex w-full flex-col items-center gap-3 self-center rounded-b-lg pt-3">
+            <div
+              className={`flex w-full  items-center gap-3 self-center rounded-b-lg  ${
+                headerVisible ? 'flex-row pr-3 pt-0.5' : 'flex-col pt-3'
+              }`}
+            >
               {themeList.map(
                 (theme, index) =>
                   theme.name !== globalTheme && (

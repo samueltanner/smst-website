@@ -30,7 +30,6 @@ export default function Home() {
 
   const { theme } = useContext(ThemeContext)
 
-  console.log(theme)
   return (
     // <ThemeProvider value={{ theme, setTheme }}>
     <div className={`h-screen pb-20`}>
