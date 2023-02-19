@@ -72,38 +72,44 @@ export default function Portfolio() {
                       controls={true}
                     />
                   )}
-                  <div className="relative flex h-full w-full gap-2">
-                    <button
-                      onClick={() => {
-                        if (imageIndex > 0) {
-                          setImageIndex(imageIndex - 1)
-                        }
-                      }}
-                    >
-                      <FiArrowLeftCircle />
-                    </button>
-
-                    <Image
-                      src={modalData.images[imageIndex]}
-                      alt={modalData.title}
-                      className="border-4 border-zinc-900 object-contain"
-                      fill
-                    />
-
-                    <button
-                      onClick={() => {
-                        if (imageIndex < modalData.images.length - 1) {
-                          setImageIndex(imageIndex + 1)
-                        } else {
-                          setImageIndex(0)
-                        }
-                      }}
-                    >
-                      <FiArrowRightCircle />
-                    </button>
-                  </div>
                 </div>
-                <span className="flex w-full justify-center gap-2"></span>
+
+                {modalData.images.length > 1 && !modalData.links.video && (
+                  <div>
+                    <div className="relative h-fit min-h-[300px] w-full">
+                      <Image
+                        src={modalData.images[imageIndex]}
+                        alt={modalData.title}
+                        className="object-contain"
+                        fill
+                      />
+                    </div>
+                    <span className="mt-2 flex w-full justify-center">
+                      <button
+                        onClick={() => {
+                          if (imageIndex > 0) {
+                            setImageIndex(imageIndex - 1)
+                          }
+                        }}
+                        className="z-10 block"
+                      >
+                        <FiArrowLeftCircle className="mr-3 h-6 w-6 hover:scale-105" />
+                      </button>
+                      <button
+                        onClick={() => {
+                          if (imageIndex < modalData.images.length - 1) {
+                            setImageIndex(imageIndex + 1)
+                          } else {
+                            setImageIndex(0)
+                          }
+                        }}
+                        className="z-10 block"
+                      >
+                        <FiArrowRightCircle className="ml-3 h-6 w-6 hover:scale-105" />
+                      </button>
+                    </span>
+                  </div>
+                )}
                 <p>{jsonToParagraphs(modalData.description)}</p>
               </span>
             </div>
