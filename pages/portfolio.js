@@ -6,11 +6,14 @@ import { useState, useContext, useEffect } from 'react'
 import { Modal } from '../components/Modal'
 import ReactPlayer from 'react-player'
 import { BiCodeAlt } from 'react-icons/bi'
+import { FiArrowLeftCircle, FiArrowRightCircle } from 'react-icons/fi'
 import { jsonToParagraphs } from '../lib/helpers'
 import ThemeContext from '../components/theme/themeContext'
+import Image from 'next/image'
 
 export default function Portfolio() {
   const [modalData, setModalData] = useState(false)
+  const [imageIndex, setImageIndex] = useState(0)
 
   const { theme, setTheme } = useContext(ThemeContext)
 
@@ -58,8 +61,8 @@ export default function Portfolio() {
                 ))}
               </div>
               <span className="flex flex-col gap-3 overflow-y-scroll">
-                {modalData.links.video && (
-                  <div className=" flex w-full max-w-full items-center justify-center">
+                <div className=" flex w-full max-w-full items-center justify-center">
+                  {modalData.links.video && (
                     <ReactPlayer
                       url={modalData.links.video}
                       muted
@@ -68,8 +71,39 @@ export default function Portfolio() {
                       onReady={() => console.log('onReady callback')}
                       controls={true}
                     />
+                  )}
+                  <div className="relative flex h-full w-full gap-2">
+                    <button
+                      onClick={() => {
+                        if (imageIndex > 0) {
+                          setImageIndex(imageIndex - 1)
+                        }
+                      }}
+                    >
+                      <FiArrowLeftCircle />
+                    </button>
+
+                    <Image
+                      src={modalData.images[imageIndex]}
+                      alt={modalData.title}
+                      className="border-4 border-zinc-900 object-contain"
+                      fill
+                    />
+
+                    <button
+                      onClick={() => {
+                        if (imageIndex < modalData.images.length - 1) {
+                          setImageIndex(imageIndex + 1)
+                        } else {
+                          setImageIndex(0)
+                        }
+                      }}
+                    >
+                      <FiArrowRightCircle />
+                    </button>
                   </div>
-                )}
+                </div>
+                <span className="flex w-full justify-center gap-2"></span>
                 <p>{jsonToParagraphs(modalData.description)}</p>
               </span>
             </div>

@@ -11,21 +11,18 @@ export const ThemeSelector = ({ headerVisible }) => {
       name: 'default',
       colors: {
         primary: 'bg-[#18181b]',
-        accent: 'to-white',
       },
     },
     {
       name: 'woodsy',
       colors: {
         primary: 'bg-[#414833]',
-        accent: 'to-[#C2CDAA]',
       },
     },
     {
       name: 'desert',
       colors: {
         primary: 'bg-[#778C8E]',
-        accent: 'to-[#C2CDAA]',
       },
     },
   ]
@@ -69,7 +66,7 @@ export const ThemeSelector = ({ headerVisible }) => {
                     theme.name !== globalTheme && (
                       <motion.div
                         key={index}
-                        className={`z-30 h-5 w-5 rotate-45 rounded-full ring-2 ring-white drop-shadow-md ${theme.colors.primary} ${theme.colors.accent}`}
+                        className={`z-30 h-5 w-5 rotate-45 rounded-full ring-2 ring-white drop-shadow-md ${theme.colors.primary}`}
                         onClick={() => {
                           setTheme(theme.name)
                           setThemeDropdownOpen(false)

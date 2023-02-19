@@ -34,7 +34,7 @@ export const Header = ({ children, sticky = false }) => {
     <div
       className={`${
         sticky ? 'sticky top-0' : 'relative'
-      } z-50 select-none bg-primary`}
+      } z-50 select-none bg-primary drop-shadow-lg`}
       ref={headerRef}
     >
       <div className="z-50 flex h-20 items-center justify-between px-6">
@@ -42,7 +42,7 @@ export const Header = ({ children, sticky = false }) => {
           className={'h-8 w-8 fill-current text-white antialiased'}
           icon={theme}
         />
-        <div className="ml-10 flex w-full justify-start gap-8 text-base text-sm text-offWhite">
+        <div className="ml-10 flex w-full justify-start gap-8 text-sm text-offWhite">
           <button
             onClick={() => {
               router.push('/')
