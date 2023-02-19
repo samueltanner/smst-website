@@ -32,7 +32,7 @@ export const Header = ({ children, sticky = false }) => {
 
   return (
     <div
-      className={`${sticky ? 'sticky top-0' : 'relative'} bg-primary`}
+      className={`${sticky ? 'sticky top-0' : 'relative'} z-50 bg-primary`}
       ref={headerRef}
     >
       <div className="z-50 flex h-20 items-center justify-between px-6">
