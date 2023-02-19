@@ -14,6 +14,7 @@ import Image from 'next/image'
 export default function Portfolio() {
   const [modalData, setModalData] = useState(false)
   const [imageIndex, setImageIndex] = useState(0)
+  const [videoReady, setVideoReady] = useState(false)
 
   const { theme, setTheme } = useContext(ThemeContext)
 
@@ -21,8 +22,11 @@ export default function Portfolio() {
     if (theme === 'mark') {
       setTheme('default')
     }
-    // setTheme(theme === 'mark' && 'default')
   }, [theme, setTheme])
+
+  useEffect(() => {
+    setVideoReady(false)
+  }, [modalData])
 
   return (
     <div className="flex h-screen w-screen flex-col overflow-y-scroll">
@@ -63,14 +67,23 @@ export default function Portfolio() {
               <span className="flex flex-col gap-3 overflow-y-scroll">
                 <div className=" flex w-full max-w-full items-center justify-center">
                   {modalData.links.video && (
-                    <ReactPlayer
-                      url={modalData.links.video}
-                      muted
-                      playing
-                      loop
-                      onReady={() => console.log('onReady callback')}
-                      controls={true}
-                    />
+                    <div>
+                      <ReactPlayer
+                        url={modalData.links.video}
+                        height={videoReady ? '460px' : '0'}
+                        width="580px"
+                        muted
+                        playing
+                        loop
+                        onReady={() => setVideoReady(true)}
+                        controls={true}
+                      />
+                      {!videoReady && (
+                        <div className="flex w-full justify-center">
+                          Loading Video...
+                        </div>
+                      )}
+                    </div>
                   )}
                 </div>
 
