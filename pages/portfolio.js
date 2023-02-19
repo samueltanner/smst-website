@@ -26,6 +26,7 @@ export default function Portfolio() {
 
   useEffect(() => {
     setVideoReady(false)
+    setImageIndex(0)
   }, [modalData])
 
   return (
@@ -67,26 +68,26 @@ export default function Portfolio() {
               <span className="flex flex-col gap-3 overflow-y-scroll">
                 <div className=" flex w-full max-w-full items-center justify-center">
                   {modalData.links.video && (
-                    <div>
-                      <ReactPlayer
-                        url={modalData.links.video}
-                        height={videoReady ? '460px' : '0'}
-                        width="580px"
-                        muted
-                        playing
-                        loop
-                        onReady={() => setVideoReady(true)}
-                        controls={true}
-                      />
-                      {!videoReady && (
-                        <div className="flex w-full flex-col items-center justify-center text-primary">
-                          <FiLoader className="h-6 w-6 animate-spin" />
-                          Loading Video...
-                        </div>
-                      )}
-                    </div>
+                    <ReactPlayer
+                      url={modalData.links.video}
+                      muted
+                      playing
+                      loop
+                      onReady={() => setVideoReady(true)}
+                      controls={true}
+                    />
                   )}
                 </div>
+                {modalData.links.video && (
+                  <div>
+                    {!videoReady && (
+                      <div className="flex w-full flex-col items-center justify-center text-primary">
+                        <FiLoader className="h-6 w-6 animate-spin" />
+                        Loading Video...
+                      </div>
+                    )}
+                  </div>
+                )}
 
                 {modalData.images.length > 1 && !modalData.links.video && (
                   <div>
@@ -107,7 +108,7 @@ export default function Portfolio() {
                         }}
                         className="z-10 block"
                       >
-                        <FiArrowLeftCircle className="mr-3 h-6 w-6 animate-spin hover:scale-105" />
+                        <FiArrowLeftCircle className="mr-3 h-6 w-6 hover:scale-105" />
                       </button>
                       <button
                         onClick={() => {
