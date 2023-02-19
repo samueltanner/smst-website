@@ -6,7 +6,7 @@ import { useState, useContext, useEffect } from 'react'
 import { Modal } from '../components/Modal'
 import ReactPlayer from 'react-player'
 import { BiCodeAlt } from 'react-icons/bi'
-import { FiArrowLeftCircle, FiArrowRightCircle } from 'react-icons/fi'
+import { FiArrowLeftCircle, FiArrowRightCircle, FiLoader } from 'react-icons/fi'
 import { jsonToParagraphs } from '../lib/helpers'
 import ThemeContext from '../components/theme/themeContext'
 import Image from 'next/image'
@@ -79,7 +79,8 @@ export default function Portfolio() {
                         controls={true}
                       />
                       {!videoReady && (
-                        <div className="flex w-full justify-center">
+                        <div className="flex w-full flex-col items-center justify-center text-primary">
+                          <FiLoader className="h-6 w-6 animate-spin" />
                           Loading Video...
                         </div>
                       )}
@@ -106,7 +107,7 @@ export default function Portfolio() {
                         }}
                         className="z-10 block"
                       >
-                        <FiArrowLeftCircle className="mr-3 h-6 w-6 hover:scale-105" />
+                        <FiArrowLeftCircle className="mr-3 h-6 w-6 animate-spin hover:scale-105" />
                       </button>
                       <button
                         onClick={() => {
