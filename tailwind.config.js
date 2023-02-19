@@ -77,8 +77,8 @@ module.exports = {
           name: 'desert',
           extend: {
             colors: {
-              primary: '#778C8E',
-              secondary: '#49473E',
+              primary: '#49473E',
+              secondary: '#778C8E',
               accent: '#C2CDAA',
               dark: '#49473E',
               black: '#212524',

@@ -10,22 +10,19 @@ export const ThemeSelector = ({ headerVisible }) => {
     {
       name: 'default',
       colors: {
-        primary: 'from-[#18181b]',
-        accent: 'to-white',
+        primary: 'bg-[#18181b]',
       },
     },
     {
       name: 'woodsy',
       colors: {
-        primary: 'from-[#414833]',
-        accent: 'to-[#C2CDAA]',
+        primary: 'bg-[#414833]',
       },
     },
     {
       name: 'desert',
       colors: {
-        primary: 'from-[#778C8E]',
-        accent: 'to-[#C2CDAA]',
+        primary: 'bg-[#778C8E]',
       },
     },
   ]
@@ -55,7 +52,7 @@ export const ThemeSelector = ({ headerVisible }) => {
               setThemeDropdownOpen(!themeDropdownOpen)
             }}
           >
-            <span className="h-5 w-5 rotate-45 rounded-full bg-gradient-to-b from-primary to-accent" />
+            <span className="h-5 w-5 rotate-45 rounded-full bg-primary" />
           </div>
           <AnimatePresence>
             {themeDropdownOpen && (
@@ -69,7 +66,7 @@ export const ThemeSelector = ({ headerVisible }) => {
                     theme.name !== globalTheme && (
                       <motion.div
                         key={index}
-                        className={`z-30 h-5 w-5 rotate-45 rounded-full bg-gradient-to-b ring-2 ring-white drop-shadow-md ${theme.colors.primary} ${theme.colors.accent}`}
+                        className={`z-30 h-5 w-5 rotate-45 rounded-full ring-2 ring-white drop-shadow-md ${theme.colors.primary}`}
                         onClick={() => {
                           setTheme(theme.name)
                           setThemeDropdownOpen(false)

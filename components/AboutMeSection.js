@@ -9,6 +9,7 @@ import { TessNMe } from '../components/outlines/TessNMe'
 import { MarkHatOutline } from './outlines/MarkHatOutline'
 import { useRouter } from 'next/router'
 import { motion, AnimatePresence } from 'framer-motion'
+import { jsonToParagraphs } from '../lib/helpers'
 
 const sam_variants = [
   {
@@ -161,11 +162,12 @@ export const AboutMeSection = () => {
           }`}
         >
           <div className="z-10">
-            {variants[sectionIndex]?.body.map((paragraph, index) => (
+            {jsonToParagraphs(variants[sectionIndex]?.body)}
+            {/* {variants[sectionIndex]?.body.map((paragraph, index) => (
               <div className="mb-4" key={index}>
                 <p className="">{paragraph}</p>
               </div>
-            ))}
+            ))} */}
             {variants[sectionIndex]?.button && (
               <button
                 className="wp group absolute inset-x-0 bottom-0 flex max-w-full justify-center pb-3 text-justify font-primary font-extrabold text-secondary transition duration-100 ease-in-out hover:scale-105"
