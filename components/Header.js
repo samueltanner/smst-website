@@ -24,7 +24,7 @@ export const Header = ({ children, sticky = false }) => {
   }, [])
 
   const underline = (path) =>
-    `border-b-[4px] mt-1 pb-0.5 ${
+    `border-b-[2px] mt-1 pb-0.5 pl-2 ${
       path === router.pathname
         ? 'border-secondary'
         : 'border-transparent hover:border-secondary hover:border-opacity-30 '
@@ -32,7 +32,9 @@ export const Header = ({ children, sticky = false }) => {
 
   return (
     <div
-      className={`${sticky ? 'sticky top-0' : 'relative'} z-50 bg-primary`}
+      className={`${
+        sticky ? 'sticky top-0' : 'relative'
+      } z-50 select-none bg-primary`}
       ref={headerRef}
     >
       <div className="z-50 flex h-20 items-center justify-between px-6">
@@ -40,14 +42,14 @@ export const Header = ({ children, sticky = false }) => {
           className={'h-8 w-8 fill-current text-white antialiased'}
           icon={theme}
         />
-        <div className="ml-10 flex w-full justify-start gap-8 font-normal text-offWhite">
+        <div className="ml-10 flex w-full justify-start gap-8 text-base text-sm text-offWhite">
           <button
             onClick={() => {
               router.push('/')
             }}
             className={`${underline('/')}`}
           >
-            home
+            Home
           </button>
           <button
             onClick={() => {
@@ -55,7 +57,7 @@ export const Header = ({ children, sticky = false }) => {
             }}
             className={`${underline('/resume')}`}
           >
-            resume
+            Resume
           </button>
           <button
             onClick={() => {
@@ -63,7 +65,7 @@ export const Header = ({ children, sticky = false }) => {
             }}
             className={`${underline('/portfolio')}`}
           >
-            portfolio
+            Portfolio
           </button>
         </div>
         <ThemeSelector headerVisible={headerVisible} />
