@@ -42,7 +42,7 @@ export const Header = ({ children, sticky = false }) => {
           className={'h-8 w-8 fill-current text-white antialiased'}
           icon={theme}
         />
-        <div className="ml-10 flex w-full justify-start gap-8 text-sm text-offWhite">
+        <div className="mx-8 flex w-full justify-start gap-6 text-sm text-offWhite">
           <button
             onClick={() => {
               router.push('/')
