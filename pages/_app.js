@@ -7,6 +7,14 @@ import { getThemeFromLS, setThemeToLS } from '../lib/storage'
 function MyApp({ Component, pageProps }) {
   const [theme, setTheme] = useState('default')
 
+  const getWindowDimensions = () => {
+    const { innerWidth: width, innerHeight: height } = window
+    return {
+      width,
+      height,
+    }
+  }
+
   useEffect(() => {
     const docHeightFix = () => {
       document?.documentElement.style.setProperty(
@@ -14,10 +22,10 @@ function MyApp({ Component, pageProps }) {
         window.innerHeight * 0.01 + 'px'
       )
     }
-    window.addEventListener('resize', docHeightFix)
-    return () => {
-      window.removeEventListener('resize', docHeightFix)
+    if (getWindowDimensions.width > 768) {
+      window.addEventListener('resize', docHeightFix)
     }
+    docHeightFix()
   })
 
   useEffect(() => {
