@@ -128,15 +128,15 @@ export const InteractiveSubHeader = ({}) => {
           >
             <HeadShotCutout
               className={
-                'absolute inset-auto bottom-0 z-0 max-h-full w-full max-w-full scale-[95%] fill-current text-secondary opacity-90 lg:inset-0 lg:mx-auto'
+                'absolute inset-auto bottom-0 z-0 max-h-full w-full max-w-full scale-[95%] fill-current text-primary opacity-90 lg:inset-0 lg:mx-auto'
               }
             />
 
-            {/* <ShirtCutout
+            <ShirtCutout
               className={
-                'absolute -bottom-0 z-20 h-fit max-h-full w-full max-w-full fill-secondary object-contain text-orange-500 opacity-100'
+                'absolute inset-auto bottom-0 z-20 max-h-full w-full max-w-full fill-current text-secondary lg:inset-0 lg:mx-auto'
               }
-            /> */}
+            />
           </ImageWithOverlay>
         </motion.div>
       </div>
