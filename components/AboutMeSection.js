@@ -162,7 +162,7 @@ export const AboutMeSection = () => {
           }`}
         >
           <div className="z-10 h-full">
-            <p>{jsonToParagraphs(variants[sectionIndex]?.body)}</p>
+            {jsonToParagraphs(variants[sectionIndex]?.body)}
             {variants[sectionIndex]?.button && (
               <button
                 className="wp group absolute inset-x-0 bottom-0 flex max-w-full justify-center pb-3 text-justify font-primary font-extrabold text-secondary transition duration-100 ease-in-out hover:scale-105"

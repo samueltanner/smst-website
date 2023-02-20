@@ -3,9 +3,11 @@ import { ThemeSelector } from './theme/ThemeSelector'
 import { useContext, useEffect, useRef, useState } from 'react'
 import ThemeContext from './theme/themeContext'
 import { useRouter } from 'next/router'
+import { AnimatePresence, motion } from 'framer-motion'
 
 export const Header = ({ children, sticky = false }) => {
   const [headerVisible, setHeaderVisible] = useState(true)
+  const [copied, setCopied] = useState(false)
   const router = useRouter()
   const headerRef = useRef(null)
   const { theme } = useContext(ThemeContext)
@@ -22,6 +24,19 @@ export const Header = ({ children, sticky = false }) => {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  useEffect(() => {
+    if (copied) {
+      const timeout = setTimeout(() => {
+        setCopied(false)
+      }, 1000)
+      return () => clearTimeout(timeout)
+    }
+  }, [copied])
+
+  const addToClipboard = () => {
+    navigator.clipboard.writeText('samuel.m.s.tanner@gmail.com')
+  }
 
   const underline = (path) =>
     `border-b-[2px] mt-1 pb-0.5 pl-2 ${
@@ -66,6 +81,28 @@ export const Header = ({ children, sticky = false }) => {
             className={`${underline('/portfolio')}`}
           >
             Portfolio
+          </button>
+          <button
+            onClick={() => {
+              addToClipboard()
+              setCopied(true)
+            }}
+            className={`${underline('/portfolio')} relative`}
+          >
+            Contact
+            <AnimatePresence>
+              {copied && (
+                <motion.span
+                  className="absolute -bottom-20 left-0 z-20 rounded-md bg-secondary p-2 text-xs"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 0 }}
+                >
+                  <span className="absolute -top-2 left-7 z-10 flex h-4 w-4 rotate-45 rounded-sm bg-secondary" />
+                  Email Copied To Clipboard!
+                </motion.span>
+              )}
+            </AnimatePresence>
           </button>
         </div>
         <ThemeSelector headerVisible={headerVisible} />
