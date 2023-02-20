@@ -12,7 +12,7 @@ export const Modal = ({ children, modalData, setModalData }) => {
       exit={{ opacity: 0 }}
     >
       <div
-        className="relative z-[100] flex h-fit max-h-full w-full rounded-xl border-4 border-secondary bg-offWhite p-6 drop-shadow-lg md:h-fit md:max-h-[725px] md:w-3/4 md:max-w-[650px]"
+        className="relative z-[100] flex h-fit max-h-full w-full rounded-xl border-4 border-primary bg-offWhite p-6 drop-shadow-lg md:h-fit md:max-h-[725px] md:w-3/4 md:max-w-[650px]"
         onClick={(e) => e.stopPropagation()}
       >
         <span className="group absolute right-0 top-0 h-fit w-fit p-2 text-primary">
