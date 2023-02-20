@@ -136,7 +136,6 @@ const MonthChunk = ({ data, setModalData }) => {
               alt={data[0]?.name}
               fill
               className={`absolute z-0 scale-105 rounded-full`}
-              sizes="100%"
             />
           </span>
           <span className="h-20 flex-none border-l-2 border-primary" />

@@ -53,7 +53,7 @@ export const Header = ({ sticky = false }) => {
     <div
       className={`${
         sticky ? 'sticky top-0' : ''
-      } z-[100] select-none bg-primary drop-shadow-lg`}
+      } select-none bg-primary drop-shadow-lg`}
       ref={headerRef}
     >
       <div className="flex h-20 items-center justify-between px-6">
@@ -91,7 +91,7 @@ export const Header = ({ sticky = false }) => {
               addToClipboard()
               setCopied(true)
             }}
-            className={`relative`}
+            className={`relative z-50`}
           >
             Contact
             <AnimatePresence>
