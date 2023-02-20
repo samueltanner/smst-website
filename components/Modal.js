@@ -3,7 +3,7 @@ import { FiXCircle } from 'react-icons/fi'
 export const Modal = ({ children, modalData, setModalData }) => {
   return (
     <motion.div
-      className="absolute top-0 z-[100] flex h-screen w-screen items-center justify-center bg-primary bg-opacity-50 p-4"
+      className="absolute top-0 z-[100] flex h-screen max-h-screen w-screen items-center justify-center bg-primary bg-opacity-50 p-4"
       onClick={() => {
         setModalData(null)
       }}
