@@ -5,7 +5,7 @@ import ThemeContext from './theme/themeContext'
 import { useRouter } from 'next/router'
 import { AnimatePresence, motion } from 'framer-motion'
 
-export const Header = ({ children, sticky = false }) => {
+export const Header = ({ sticky = false }) => {
   const [headerVisible, setHeaderVisible] = useState(true)
   const [copied, setCopied] = useState(false)
   const router = useRouter()
@@ -34,6 +34,10 @@ export const Header = ({ children, sticky = false }) => {
     }
   }, [copied])
 
+  useEffect(() => {
+    const widowSize = window.innerWidth
+  })
+
   const addToClipboard = () => {
     navigator.clipboard.writeText('samuel.m.s.tanner@gmail.com')
   }
@@ -48,16 +52,16 @@ export const Header = ({ children, sticky = false }) => {
   return (
     <div
       className={`${
-        sticky ? 'sticky top-0' : 'relative'
-      } z-50 select-none bg-primary drop-shadow-lg`}
+        sticky ? 'sticky top-0' : ''
+      } z-[100] select-none bg-primary drop-shadow-lg`}
       ref={headerRef}
     >
-      <div className="z-50 flex h-20 items-center justify-between px-6">
+      <div className="flex h-20 items-center justify-between px-6">
         <Icon
           className={'h-8 w-8 fill-current text-white antialiased'}
           icon={theme}
         />
-        <div className="mx-8 flex w-full justify-start gap-6 text-sm text-offWhite">
+        <div className="mx-2 flex w-full justify-start gap-2 text-sm text-offWhite md:mx-6 md:gap-4">
           <button
             onClick={() => {
               router.push('/')
@@ -87,7 +91,7 @@ export const Header = ({ children, sticky = false }) => {
               addToClipboard()
               setCopied(true)
             }}
-            className={`${underline('/portfolio')} relative`}
+            className={`relative`}
           >
             Contact
             <AnimatePresence>
@@ -106,7 +110,6 @@ export const Header = ({ children, sticky = false }) => {
           </button>
         </div>
         <ThemeSelector headerVisible={headerVisible} />
-        {children}
       </div>
       {/* <div className="top-0 border-b-[4px] border-secondary sm:mr-[290px] " />
       <span className="absolute top-20 right-[78px] z-30 hidden h-[440px] w-[215px] rounded-br-full rounded-tr-full border-t-[4px] border-b-[4px] border-r-[4px] border-secondary sm:block" /> */}
