@@ -155,19 +155,14 @@ export const AboutMeSection = () => {
           {variants[sectionIndex]?.title}
         </p>
         <div
-          className={`text-md mb-4 mt-4 flex flex-col justify-center gap-4 overflow-y-scroll font-primary font-light text-zinc-900 md:items-center md:justify-center ${
+          className={`text-md mb-4 mt-4 flex flex-col justify-center gap-4 overflow-hidden overflow-y-scroll  font-primary font-light text-zinc-900 md:items-center md:justify-center ${
             sectionIndex % 2 === 0
               ? 'md:order-1 md:-ml-8'
               : 'md:order-2 md:-mr-12'
           }`}
         >
-          <div className="z-10">
+          <div className="z-10 h-full">
             {jsonToParagraphs(variants[sectionIndex]?.body)}
-            {/* {variants[sectionIndex]?.body.map((paragraph, index) => (
-              <div className="mb-4" key={index}>
-                <p className="">{paragraph}</p>
-              </div>
-            ))} */}
             {variants[sectionIndex]?.button && (
               <button
                 className="wp group absolute inset-x-0 bottom-0 flex max-w-full justify-center pb-3 text-justify font-primary font-extrabold text-secondary transition duration-100 ease-in-out hover:scale-105"
