@@ -3,6 +3,7 @@ import Head from 'next/head'
 import { ThemeProvider } from '../components/theme/themeContext'
 import { useState, useEffect, useRef } from 'react'
 import { getThemeFromLS, setThemeToLS } from '../lib/storage'
+import { isMobile } from 'react-device-detect'
 
 function MyApp({ Component, pageProps }) {
   const [theme, setTheme] = useState('default')
@@ -22,10 +23,17 @@ function MyApp({ Component, pageProps }) {
         window.innerHeight * 0.01 + 'px'
       )
     }
-    if (getWindowDimensions.width > 768) {
+    if (!isMobile) {
       window.addEventListener('resize', docHeightFix)
     }
     docHeightFix()
+
+    return () => {
+      if (!isMobile) {
+        window.removeEventListener('resize', docHeightFix)
+      }
+      docHeightFix()
+    }
   })
 
   useEffect(() => {
