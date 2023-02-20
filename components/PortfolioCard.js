@@ -3,7 +3,7 @@ import { FiArrowRight } from 'react-icons/fi'
 import { useEffect, useState } from 'react'
 export const PortfolioCard = ({ project, index, selectedCard }) => {
   return (
-    <div className="group h-full w-full rounded-xl bg-offWhite text-primary ring-4 ring-secondary drop-shadow-lg transition duration-200 ease-in-out hover:scale-[102%] hover:transform">
+    <div className="group h-full w-full rounded-xl bg-offWhite text-primary ring-4 ring-primary drop-shadow-lg transition duration-200 ease-in-out hover:scale-[102%] hover:transform">
       <div className="absolute z-10 flex h-full w-full cursor-pointer items-center justify-center rounded-xl bg-zinc-900 bg-opacity-50">
         <span className="flex h-full w-full items-center gap-2 md:justify-center">
           <p className="ml-8 w-full font-primary text-2xl font-bold text-white md:w-fit">

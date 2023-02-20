@@ -49,11 +49,11 @@ export default function Portfolio() {
         {modalData && (
           <Modal setModalData={setModalData}>
             <div className="flex w-full flex-col gap-4 font-primary text-primary">
-              <p className="flex items-center gap-4 text-4xl font-extrabold">
+              <p className="flex flex-wrap items-center gap-4 text-4xl font-extrabold">
                 {modalData.title}{' '}
                 {modalData.links.repo && (
                   <BiCodeAlt
-                    className="cursor-pointer opacity-50 transition-opacity duration-300 ease-in-out hover:opacity-100"
+                    className="flex-none cursor-pointer opacity-50 transition-opacity duration-300 ease-in-out hover:opacity-100"
                     onClick={() => window.open(modalData.links.repo, '_blank')}
                   />
                 )}
