@@ -15,12 +15,14 @@ export const PortfolioCard = ({ project, index, selectedCard }) => {
           </span>
         </span>
       </div>
-      <Image
-        src={project.images[0]}
-        fill
-        className="relative mx-auto overflow-hidden rounded-xl bg-offWhite object-cover"
-        alt={project.title}
-      />
+      <div className="relative">
+        <Image
+          src={project.images[0]}
+          fill
+          className="relative mx-auto overflow-hidden rounded-xl bg-offWhite object-cover"
+          alt={project.title}
+        />
+      </div>
     </div>
   )
 }

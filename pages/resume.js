@@ -130,7 +130,7 @@ const MonthChunk = ({ data, setModalData }) => {
             positive ? 'mb-60 flex-col' : 'mt-60 flex-col-reverse'
           } h-60 flex-col items-center justify-center`}
         >
-          <span className="z-10 flex h-10 w-10 flex-none rounded-full border-[3px]  border-primary drop-shadow-lg transition duration-300 ease-in-out hover:scale-110">
+          <span className="relative z-10 flex h-10 w-10 flex-none rounded-full border-[3px]  border-primary drop-shadow-lg transition duration-300 ease-in-out hover:scale-110">
             <Image
               src={data[0]?.logo}
               alt={data[0]?.name}
