@@ -6,6 +6,7 @@ import ThemeContext from './theme/themeContext'
 import { ImageWithOverlay } from './outlines/ImagewithOverlay'
 import { TessNMe } from './outlines/TessNMe'
 import { HeadShotCutout } from './outlines/HeadShotCutout'
+import { ShirtCutout } from './outlines/ShirtCutout'
 
 export const InteractiveSubHeader = ({}) => {
   const [headShotImage, setHeadShotImage] = useState('sam')
@@ -102,7 +103,7 @@ export const InteractiveSubHeader = ({}) => {
         </div>
 
         <motion.div
-          className="absolute bottom-0 right-0 h-3/4 w-3/4"
+          className="absolute bottom-0 right-0 mr-6 h-3/4 w-3/4"
           initial={{ opacity: headShotCollapsed ? 1 : 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
@@ -122,14 +123,20 @@ export const InteractiveSubHeader = ({}) => {
               headShotImage === 'sam' ? '/img/headshot.png' : '/img/mark.png'
             }
             className={
-              'rotate-4 relative z-10 transform object-contain object-bottom'
+              'absolute bottom-0 z-10 h-full w-full transform object-contain object-bottom'
             }
           >
             <HeadShotCutout
               className={
-                'absolute -bottom-0 z-0 h-fit max-h-full w-full max-w-full scale-[99%] fill-primary object-contain text-orange-500 opacity-100'
+                'absolute inset-auto bottom-0 z-0 max-h-full w-full max-w-full scale-[95%] fill-current text-secondary opacity-90 lg:inset-0 lg:mx-auto'
               }
             />
+
+            {/* <ShirtCutout
+              className={
+                'absolute -bottom-0 z-20 h-fit max-h-full w-full max-w-full fill-secondary object-contain text-orange-500 opacity-100'
+              }
+            /> */}
           </ImageWithOverlay>
         </motion.div>
       </div>

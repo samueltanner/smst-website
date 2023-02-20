@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export const ImageWithOverlay = ({ src, children, className }) => {
   return (
-    <div className="relative flex h-full w-full m-4">
+    <div className="relative m-4 flex h-full w-full">
       <Image
         src={src}
         alt="Sam Tanner"
