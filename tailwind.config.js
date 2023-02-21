@@ -11,7 +11,6 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'grid-paper': "url('/img/grid-paper.jpeg')",
         'footer-texture': "url('/img/footer-texture.png')",
       },
     },
