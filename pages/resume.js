@@ -6,24 +6,11 @@ import Image from 'next/image'
 import { Modal } from '../components/Modal'
 import { AnimatePresence } from 'framer-motion'
 import { jsonToParagraphs } from '../lib/helpers'
-import { FiGlobe } from 'react-icons/fi'
+import { FiGlobe, FiLink } from 'react-icons/fi'
 import ThemeContext from '../components/theme/themeContext'
+import { FiLinkedin, FiFileText } from 'react-icons/fi'
 
-const years = [2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013]
-const months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-]
+import { years, months } from '../lib/data'
 
 const filterDataByPeriod = (data, year, month) => {
   let periodData = data.filter((item) => {
@@ -66,6 +53,18 @@ export default function Resume() {
           )
         })}
       </div>
+      <span className="fixed bottom-0 left-0 flex flex-row gap-4 p-4">
+        <SquareLink url={'https://www.linkedin.com/in/samueltanner/'}>
+          <FiLinkedin className="h-6 w-6 flex-none" />
+        </SquareLink>
+        <SquareLink
+          url={
+            'https://drive.google.com/file/d/1fKBx_b5RulyrcPyF02iaLnKj4c-wC6Ui/view?usp=share_link'
+          }
+        >
+          <FiFileText className="h-6 w-6 flex-none" />
+        </SquareLink>
+      </span>
       <AnimatePresence>
         {modalData && (
           <Modal setModalData={setModalData}>
@@ -152,6 +151,17 @@ const MonthChunk = ({ data, setModalData }) => {
           <span className="h-2 w-2 flex-none rounded-full bg-primary" />
         </div>
       )}
+    </div>
+  )
+}
+
+const SquareLink = ({ url, children }) => {
+  return (
+    <div
+      className="full flex flex h-10 w-10 flex-none items-center justify-center rounded-lg border-[4px] border-primary bg-offWhite text-secondary drop-shadow-lg transition duration-300 ease-in-out hover:scale-105"
+      onClick={() => window.open(url, '_blank')}
+    >
+      {children}
     </div>
   )
 }
