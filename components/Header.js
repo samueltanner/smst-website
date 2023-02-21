@@ -4,6 +4,7 @@ import { useContext, useEffect, useRef, useState } from 'react'
 import ThemeContext from './theme/themeContext'
 import { useRouter } from 'next/router'
 import { AnimatePresence, motion } from 'framer-motion'
+import { CopyFlag } from './CopyFlag'
 
 export const Header = ({ sticky = false }) => {
   const [headerVisible, setHeaderVisible] = useState(true)
@@ -34,16 +35,12 @@ export const Header = ({ sticky = false }) => {
     }
   }, [copied])
 
-  useEffect(() => {
-    const widowSize = window.innerWidth
-  })
-
   const addToClipboard = () => {
     navigator.clipboard.writeText('samuel.m.s.tanner@gmail.com')
   }
 
   const underline = (path) =>
-    `border-b-[2px] mt-1 pb-0.5 pl-2 ${
+    `border-b-[2px] mt-1 pb-0.5 ${
       path === router.pathname
         ? 'border-secondary'
         : 'border-transparent hover:border-secondary hover:border-opacity-30 '
@@ -53,15 +50,17 @@ export const Header = ({ sticky = false }) => {
     <div
       className={`${
         sticky ? 'sticky top-0' : ''
-      } select-none bg-primary drop-shadow-lg`}
+      } z-40 select-none bg-primary font-primary drop-shadow-lg`}
       ref={headerRef}
     >
       <div className="flex h-20 items-center justify-between px-6">
         <Icon
-          className={'h-8 w-8 fill-current text-white antialiased'}
+          className={
+            'hidden h-8 w-8 fill-current text-white antialiased sm:block'
+          }
           icon={theme}
         />
-        <div className="mx-2 flex w-full justify-start gap-2 text-sm text-offWhite md:mx-6 md:gap-4">
+        <div className="mx-2 flex w-full justify-start gap-3 text-sm text-offWhite sm:mx-6 md:gap-4">
           <button
             onClick={() => {
               router.push('/')
@@ -94,19 +93,7 @@ export const Header = ({ sticky = false }) => {
             className={`relative z-50`}
           >
             Contact
-            <AnimatePresence>
-              {copied && (
-                <motion.span
-                  className="absolute -bottom-20 left-0 z-20 rounded-md bg-secondary p-2 text-xs"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 0 }}
-                >
-                  <span className="absolute -top-2 left-7 z-10 flex h-4 w-4 rotate-45 rounded-sm bg-secondary" />
-                  Email Copied To Clipboard!
-                </motion.span>
-              )}
-            </AnimatePresence>
+            <CopyFlag copied={copied} />
           </button>
         </div>
         <ThemeSelector headerVisible={headerVisible} />

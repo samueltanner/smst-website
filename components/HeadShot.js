@@ -5,6 +5,7 @@ import { FiChevronDown, FiRefreshCcw } from 'react-icons/fi'
 import { useState, useRef, useEffect, useContext } from 'react'
 import ThemeContext from './theme/themeContext'
 import { HeadShotCutout } from './outlines/HeadShotCutout'
+import { ImageWithOverlay } from './outlines/ImagewithOverlay'
 
 export const HeadShot = ({
   headShotImage,
@@ -28,67 +29,65 @@ export const HeadShot = ({
   const { setTheme } = useContext(ThemeContext)
 
   return (
-    <div className="flex h-full w-full items-end pr-16">
-      <div className="group relative flex h-[80%] w-full items-center justify-center">
-        <motion.div
-          className="group absolute bottom-0 flex h-full max-h-full w-full items-end justify-end"
-          initial={{ y: 0 }}
-          animate={{
-            y: headShotCollapsed ? '60%' : 0,
-            transition: {
-              type: 'spring',
-              damping: 30,
-              stiffness: 100,
-              delay: !headShotCollapsed ? 0.25 : 0,
-            },
-          }}
-          exit={{ y: 0 }}
+    <>
+      <motion.div
+        className="absolute bottom-0 h-full w-full"
+        initial={{ y: 0 }}
+        animate={{
+          y: headShotCollapsed ? '60%' : 0,
+          transition: {
+            type: 'spring',
+            damping: 30,
+            stiffness: 100,
+            delay: !headShotCollapsed ? 0.25 : 0,
+          },
+        }}
+        exit={{ y: 0 }}
+      >
+        <ImageWithOverlay
+          key={headShotImage}
+          src={headShotImage === 'sam' ? '/img/headshot.png' : '/img/mark.png'}
+          className={
+            'absolute bottom-0 z-10 h-full w-full transform object-contain object-bottom'
+          }
         >
-          <img
-            className="z-20 h-fit max-h-full select-none"
-            src={
-              headShotImage === 'sam' ? '/img/headshot.png' : '/img/mark.png'
-            }
-            alt="sam or mark"
-            style={{ filter: `hue-rotate(${degree}deg)` }}
-          />
           {headShotImage === 'sam' && (
-            <HeadShotCutout
-              className={
-                'absolute z-0 -mb-[4px] h-fit max-h-full fill-current text-primary'
-              }
-            />
+            <>
+              <HeadShotCutout
+                className={
+                  'absolute inset-auto bottom-0 z-0 max-h-full w-full max-w-full scale-[95%] fill-current text-primary opacity-90 lg:inset-0 lg:mx-auto'
+                }
+              />
+              {!shirtOverlayHidden && (
+                <ShirtCutout
+                  onClick={() => {
+                    setShirtOverlayHidden(true)
+                  }}
+                  className={
+                    'absolute inset-auto bottom-0 z-50 max-h-full w-full max-w-full fill-current text-secondary lg:inset-0 lg:mx-auto'
+                  }
+                />
+              )}
+            </>
           )}
-          <ShirtCutout
-            className={`absolute z-40 h-fit max-h-full fill-current text-secondary ${
-              !shirtOverlayHidden && headShotImage !== 'mark'
-                ? 'text-secondary hover:text-opacity-90'
-                : 'text-transparent'
-            } transition duration-300 ease-in-out`}
-            onClick={() => {
-              console.log(
-                !shirtOverlayHidden ? "Hey! That's my shirt!" : 'Trippy'
-              )
-              setShirtOverlayHidden(true)
-              handleRotate()
-            }}
-          />
-        </motion.div>
-        <span
-          className={`absolute -right-10 bottom-4 z-50 flex items-center justify-center rounded-full border-2 border-zinc-900 bg-white text-slate-900 ring-4 ring-white drop-shadow-md hover:bg-zinc-200 `}
-          ref={collapseButtonRef}
-        >
-          <FiChevronDown
-            className={`h-6 w-6 pt-0.5 ${
-              headShotCollapsed && 'rotate-180'
-            } cursor-pointer transition duration-300 ease-in-out`}
-            onClick={() => {
-              setHeadShotCollapsed(!headShotCollapsed)
-            }}
-          />
-        </span>
+        </ImageWithOverlay>
+      </motion.div>
+      <span
+        className={`absolute right-0 bottom-4 z-50 flex items-center justify-center rounded-full border-2 border-zinc-900 bg-white text-slate-900 ring-4 ring-white drop-shadow-md hover:bg-zinc-200 md:right-4 `}
+        ref={collapseButtonRef}
+      >
+        <FiChevronDown
+          className={`h-6 w-6 pt-0.5 ${
+            headShotCollapsed && 'rotate-180'
+          } cursor-pointer transition duration-300 ease-in-out`}
+          onClick={() => {
+            setHeadShotCollapsed(!headShotCollapsed)
+          }}
+        />
+      </span>
+      <AnimatePresence>
         <motion.div
-          className={`absolute -right-10 bottom-14 z-50 flex rounded-full border-2 border-zinc-900 bg-white p-1 text-slate-900 ring-4 ring-white drop-shadow-md hover:bg-zinc-200 md:ml-40`}
+          className={`absolute right-0 bottom-14 z-50 flex rounded-full border-2 border-zinc-900 bg-white p-1 text-slate-900 ring-4 ring-white drop-shadow-md hover:bg-zinc-200 md:right-4 md:ml-40`}
           initial={{ opacity: 0 }}
           animate={{
             opacity: headShotCollapsed ? 1 : 0,
@@ -110,7 +109,7 @@ export const HeadShot = ({
             }}
           />
         </motion.div>
-      </div>
-    </div>
+      </AnimatePresence>
+    </>
   )
 }

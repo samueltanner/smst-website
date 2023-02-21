@@ -1,5 +1,5 @@
 import { Header } from '../components/Header'
-import { useState } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { resume_data } from '../lib/data'
 import dayjs from 'dayjs'
 import Image from 'next/image'
@@ -7,6 +7,7 @@ import { Modal } from '../components/Modal'
 import { AnimatePresence } from 'framer-motion'
 import { jsonToParagraphs } from '../lib/helpers'
 import { FiGlobe } from 'react-icons/fi'
+import ThemeContext from '../components/theme/themeContext'
 
 const years = [2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013]
 const months = [
@@ -39,6 +40,14 @@ const filterDataByPeriod = (data, year, month) => {
 
 export default function Resume() {
   const [modalData, setModalData] = useState(null)
+
+  const { theme, setTheme } = useContext(ThemeContext)
+  useEffect(() => {
+    if (theme === 'mark') {
+      setTheme('default')
+    }
+  }, [theme, setTheme])
+
   return (
     <div className="flex h-screen w-screen flex-col">
       <Header sticky={true} />
@@ -136,6 +145,7 @@ const MonthChunk = ({ data, setModalData }) => {
               alt={data[0]?.name}
               fill
               className={`absolute z-0 scale-105 rounded-full`}
+              sizes="100%"
             />
           </span>
           <span className="h-20 flex-none border-l-2 border-primary" />

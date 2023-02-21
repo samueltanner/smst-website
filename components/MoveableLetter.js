@@ -6,7 +6,7 @@ export const MoveableLetter = ({ constraintsRef, letter }) => {
 
   return (
     <motion.div
-      className={`text-bold lg flex flex-none items-center justify-center self-center rounded-sm pb-1 text-zinc-900 `}
+      className={`flex flex-none items-center justify-center self-center rounded-sm pb-1 font-primary text-primary`}
       drag
       dragConstraints={constraintsRef}
       dragTransition={{ bounceStiffness: 600, bounceDamping: 100 }}
@@ -14,7 +14,7 @@ export const MoveableLetter = ({ constraintsRef, letter }) => {
       whileTap={{ cursor: 'grabbing' }}
       onClick={() => setIsDragging(!isDragging)}
     >
-      <p className="drop-shadow-xl">{letter}</p>
+      <p className="drop-shadow-">{letter}</p>
     </motion.div>
   )
 }
