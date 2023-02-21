@@ -3,10 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { MoveableLetter } from './MoveableLetter'
 import { HeadShot } from './HeadShot'
 import ThemeContext from './theme/themeContext'
-import { ImageWithOverlay } from './outlines/ImagewithOverlay'
-import { TessNMe } from './outlines/TessNMe'
-import { HeadShotCutout } from './outlines/HeadShotCutout'
-import { ShirtCutout } from './outlines/ShirtCutout'
+import { ImageWithOverlay } from './outlines/ImageWithOverlay'
 
 export const InteractiveSubHeader = ({}) => {
   const [headShotImage, setHeadShotImage] = useState('sam')
