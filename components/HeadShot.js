@@ -31,6 +31,44 @@ export const HeadShot = ({
   return (
     <>
       <motion.div
+        className="absolute bottom-0 h-full w-full"
+        initial={{ y: 0 }}
+        animate={{
+          y: headShotCollapsed ? '60%' : 0,
+          transition: {
+            type: 'spring',
+            damping: 30,
+            stiffness: 100,
+            delay: !headShotCollapsed ? 0.25 : 0,
+          },
+        }}
+        exit={{ y: 0 }}
+      >
+        <ImageWithOverlay
+          src={headShotImage === 'sam' ? '/img/headshot.png' : '/img/mark.png'}
+          className={
+            'absolute bottom-0 z-10 h-full w-full transform object-contain object-bottom'
+          }
+        >
+          <HeadShotCutout
+            className={
+              'absolute inset-auto bottom-0 z-0 max-h-full w-full max-w-full scale-[95%] fill-current text-primary opacity-90 lg:inset-0 lg:mx-auto'
+            }
+          />
+
+          {!shirtOverlayHidden && (
+            <ShirtCutout
+              onClick={() => {
+                setShirtOverlayHidden(true)
+              }}
+              className={
+                'absolute inset-auto bottom-0 z-50 max-h-full w-full max-w-full fill-current text-secondary lg:inset-0 lg:mx-auto'
+              }
+            />
+          )}
+        </ImageWithOverlay>
+      </motion.div>
+      {/* <motion.div
         className="flex"
         initial={{ y: 0 }}
         animate={{
@@ -53,17 +91,7 @@ export const HeadShot = ({
             'absolute h-full w-full -rotate-2 transform fill-current object-contain text-orange-500 opacity-40'
           }
         />
-        {/* <Image
-          fill="true"
-          className="z-10 h-full w-full select-none object-contain object-right-bottom"
-          src={headShotImage === 'sam' ? '/img/headshot.png' : '/img/mark.png'}
-          alt="sam or mark"
-          style={{ filter: `hue-rotate(${degree}deg)` }}
-          onClick={() => {
-            handleRotate()
-          }}
-        /> */}
-      </motion.div>
+      </motion.div> */}
       <span
         className={`absolute right-4 bottom-4 z-50 flex items-center justify-center rounded-full border-2 border-zinc-900 bg-white text-slate-900 ring-4 ring-white drop-shadow-md hover:bg-zinc-200 `}
         ref={collapseButtonRef}

@@ -108,7 +108,6 @@ export const InteractiveSubHeader = ({}) => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          {/* <div className="h-full w-full">
           <HeadShot
             headShotImage={headShotImage}
             setHeadShotImage={setHeadShotImage}
@@ -116,28 +115,6 @@ export const InteractiveSubHeader = ({}) => {
             headShotCollapsed={headShotCollapsed}
             setHeadShotCollapsed={setHeadShotCollapsed}
           />
-        </div> */}
-
-          <ImageWithOverlay
-            src={
-              headShotImage === 'sam' ? '/img/headshot.png' : '/img/mark.png'
-            }
-            className={
-              'absolute bottom-0 z-10 h-full w-full transform object-contain object-bottom'
-            }
-          >
-            <HeadShotCutout
-              className={
-                'absolute inset-auto bottom-0 z-0 max-h-full w-full max-w-full scale-[95%] fill-current text-primary opacity-90 lg:inset-0 lg:mx-auto'
-              }
-            />
-
-            <ShirtCutout
-              className={
-                'absolute inset-auto bottom-0 z-20 max-h-full w-full max-w-full fill-current text-secondary lg:inset-0 lg:mx-auto'
-              }
-            />
-          </ImageWithOverlay>
         </motion.div>
       </div>
     </div>
