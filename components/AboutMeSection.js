@@ -1,7 +1,7 @@
 import { SectionAdvancer } from './SectionAdvancer'
 import { useState, useContext, useEffect } from 'react'
 import ThemeContext from './theme/themeContext'
-import { ImageWithOverlay } from '../components/outlines/ImageWithOverlay'
+import { ImageWithOverlay } from './outlines/ImageWithOverlay'
 import { MeOutline } from '../components/outlines/MeOutline'
 import { UpOutline } from '../components/outlines/UpOutline'
 import { MarkNMe } from '../components/outlines/MarkNMe'
@@ -135,6 +135,7 @@ export const AboutMeSection = () => {
   const [variants, setVariants] = useState(sam_variants)
   const { theme } = useContext(ThemeContext)
   const router = useRouter()
+  const [copied, setCopied] = useState(false)
 
   useEffect(() => {
     if (theme === 'mark') {
@@ -143,6 +144,24 @@ export const AboutMeSection = () => {
       setVariants(sam_variants)
     }
   }, [theme])
+
+  useEffect(() => {
+    if (copied) {
+      const timeout = setTimeout(() => {
+        setCopied(false)
+      }, 1000)
+      return () => clearTimeout(timeout)
+    }
+  }, [copied])
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText('samuel.m.s.tanner@gmail.com')
+    setCopied(true)
+    console.log('samuel.m.s.tanner@gmail.com')
+    console.log(
+      "Or you can give me a call! 360-878-0730, but shhh... don't tell too many people!"
+    )
+  }
 
   if (!variants) return <></>
 
@@ -161,17 +180,31 @@ export const AboutMeSection = () => {
               : 'md:order-2 md:-mr-12'
           }`}
         >
-          <div className="z-10 h-full">
+          <div className="h-full md:flex md:flex-col md:items-center md:justify-center">
             {jsonToParagraphs(variants[sectionIndex]?.body)}
             {variants[sectionIndex]?.button && (
-              <button
-                className="wp group absolute inset-x-0 bottom-0 flex max-w-full justify-center pb-3 text-justify font-primary font-extrabold text-secondary transition duration-100 ease-in-out hover:scale-105"
-                onClick={() => router.push(variants[sectionIndex]?.button.link)}
-              >
-                <p className="z-10 border-b-[4px] border-b-primary border-opacity-60 text-justify group-hover:border-opacity-100">
-                  {variants[sectionIndex]?.button.text}
-                </p>
-              </button>
+              <>
+                <button
+                  className="wp group absolute inset-x-0 bottom-0 flex max-w-full justify-center pb-3 text-justify font-primary font-extrabold text-secondary transition duration-100 ease-in-out hover:scale-105"
+                  onClick={() => {
+                    variants[sectionIndex]?.title === "What's Next?"
+                      ? handleCopy()
+                      : router.push(variants[sectionIndex]?.button.link)
+                  }}
+                >
+                  <motion.p
+                    className="z-10 border-b-[4px] border-b-primary border-opacity-60 text-justify group-hover:border-opacity-100"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    key={copied}
+                  >
+                    {copied
+                      ? 'Email Copied To Clipboard!'
+                      : variants[sectionIndex]?.button.text}
+                  </motion.p>
+                </button>
+              </>
             )}
           </div>
         </div>
