@@ -5,7 +5,7 @@ import { FiChevronDown, FiRefreshCcw } from 'react-icons/fi'
 import { useState, useRef, useEffect, useContext } from 'react'
 import ThemeContext from './theme/themeContext'
 import { HeadShotCutout } from './outlines/HeadShotCutout'
-import { ImageWithOverlay } from './outlines/ImagewithOverlay'
+import { ImageWithOverlay } from './outlines/ImageWithOverlay'
 
 export const HeadShot = ({
   headShotImage,
