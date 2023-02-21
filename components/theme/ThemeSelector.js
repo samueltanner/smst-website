@@ -30,7 +30,6 @@ export const ThemeSelector = ({ headerVisible }) => {
     <AnimatePresence>
       <motion.div
         className="relative z-[100]"
-        key={headerVisible}
         initial={{ opacity: 0 }}
         animate={{
           opacity: 1,
@@ -39,13 +38,7 @@ export const ThemeSelector = ({ headerVisible }) => {
           opacity: 0,
         }}
       >
-        <div
-          className={`${
-            headerVisible
-              ? ' absolute -top-4 right-0 flex-row-reverse'
-              : 'fixed bottom-6 right-6 rotate-180 flex-col'
-          } flex self-center justify-self-center`}
-        >
+        <div className={``}>
           <div
             className="relative z-40 flex h-8 w-8 flex-none cursor-pointer items-center justify-center rounded-md bg-white ring-offset-primary drop-shadow-md hover:bg-zinc-200"
             onClick={() => {
@@ -57,9 +50,7 @@ export const ThemeSelector = ({ headerVisible }) => {
           <AnimatePresence>
             {themeDropdownOpen && (
               <div
-                className={`flex w-full  items-center gap-3 self-center rounded-b-lg  ${
-                  headerVisible ? 'flex-row pr-3 pt-0.5' : 'flex-col pt-3'
-                }`}
+                className={`absolute top-10 flex w-full flex-col items-center  gap-3 self-center rounded-b-lg pt-1`}
               >
                 {themeList.map(
                   (theme, index) =>
@@ -73,22 +64,22 @@ export const ThemeSelector = ({ headerVisible }) => {
                         }}
                         initial={{
                           opacity: 0,
-                          y: headerVisible ? 0 : -10,
-                          x: !headerVisible ? 0 : 10,
+                          y: -10,
+
                           rotate: 45,
                         }}
                         animate={{
                           opacity: 1,
                           y: 0,
-                          x: 0,
+
                           transition: {
                             delay: 0.1,
                           },
                         }}
                         exit={{
                           opacity: 0,
-                          y: !headerVisible && -20 * (index + 1),
-                          x: headerVisible && (index === 1 ? 40 : 30),
+                          y: -20 * (index + 1),
+
                           transition: {
                             delay: 0.1,
                             type: 'anticipate',

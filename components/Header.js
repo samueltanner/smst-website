@@ -55,10 +55,12 @@ export const Header = ({ sticky = false }) => {
     >
       <div className="flex h-20 items-center justify-between px-6">
         <Icon
-          className={'h-8 w-8 fill-current text-white antialiased'}
+          className={
+            'hidden h-8 w-8 fill-current text-white antialiased sm:block'
+          }
           icon={theme}
         />
-        <div className="mx-6 flex w-full justify-start gap-3 text-sm text-offWhite md:mx-6 md:gap-4">
+        <div className="mx-2 flex w-full justify-start gap-3 text-sm text-offWhite sm:mx-6 md:gap-4">
           <button
             onClick={() => {
               router.push('/')
