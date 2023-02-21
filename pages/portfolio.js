@@ -98,6 +98,7 @@ export default function Portfolio() {
                         className="object-contain"
                         fill
                         sizes="(max-width: 768px) 100vw, 50vw"
+                        priority
                       />
                     </div>
                     <span className="mt-2 flex w-full justify-center">

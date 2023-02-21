@@ -21,6 +21,7 @@ export const PortfolioCard = ({ project, index, selectedCard }) => {
         fill
         className="relative mx-auto overflow-hidden rounded-xl bg-offWhite object-cover"
         alt={project.title}
+        priority
       />
     </div>
   )

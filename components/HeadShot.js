@@ -1,5 +1,4 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import Image from 'next/image'
 import { ShirtCutout } from './outlines/ShirtCutout'
 import { FiChevronDown, FiRefreshCcw } from 'react-icons/fi'
 import { useState, useRef, useEffect, useContext } from 'react'
