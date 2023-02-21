@@ -45,55 +45,35 @@ export const HeadShot = ({
         exit={{ y: 0 }}
       >
         <ImageWithOverlay
+          key={headShotImage}
           src={headShotImage === 'sam' ? '/img/headshot.png' : '/img/mark.png'}
           className={
             'absolute bottom-0 z-10 h-full w-full transform object-contain object-bottom'
           }
         >
-          <HeadShotCutout
-            className={
-              'absolute inset-auto bottom-0 z-0 max-h-full w-full max-w-full scale-[95%] fill-current text-primary opacity-90 lg:inset-0 lg:mx-auto'
-            }
-          />
-
-          {!shirtOverlayHidden && (
-            <ShirtCutout
-              onClick={() => {
-                setShirtOverlayHidden(true)
-              }}
-              className={
-                'absolute inset-auto bottom-0 z-50 max-h-full w-full max-w-full fill-current text-secondary lg:inset-0 lg:mx-auto'
-              }
-            />
+          {headShotImage === 'sam' && (
+            <>
+              <HeadShotCutout
+                className={
+                  'absolute inset-auto bottom-0 z-0 max-h-full w-full max-w-full scale-[95%] fill-current text-primary opacity-90 lg:inset-0 lg:mx-auto'
+                }
+              />
+              {!shirtOverlayHidden && (
+                <ShirtCutout
+                  onClick={() => {
+                    setShirtOverlayHidden(true)
+                  }}
+                  className={
+                    'absolute inset-auto bottom-0 z-50 max-h-full w-full max-w-full fill-current text-secondary lg:inset-0 lg:mx-auto'
+                  }
+                />
+              )}
+            </>
           )}
         </ImageWithOverlay>
       </motion.div>
-      {/* <motion.div
-        className="flex"
-        initial={{ y: 0 }}
-        animate={{
-          y: headShotCollapsed ? '60%' : 0,
-          transition: {
-            type: 'spring',
-            damping: 30,
-            stiffness: 100,
-            delay: !headShotCollapsed ? 0.25 : 0,
-          },
-        }}
-        exit={{ y: 0 }}
-      >
-        <ImageWithOverlay
-          src={headShotImage === 'sam' ? '/img/headshot.png' : '/img/mark.png'}
-          className="z-10 object-contain"
-        />
-        <HeadShotCutout
-          className={
-            'absolute h-full w-full -rotate-2 transform fill-current object-contain text-orange-500 opacity-40'
-          }
-        />
-      </motion.div> */}
       <span
-        className={`absolute right-4 bottom-4 z-50 flex items-center justify-center rounded-full border-2 border-zinc-900 bg-white text-slate-900 ring-4 ring-white drop-shadow-md hover:bg-zinc-200 `}
+        className={`absolute right-0 bottom-4 z-50 flex items-center justify-center rounded-full border-2 border-zinc-900 bg-white text-slate-900 ring-4 ring-white drop-shadow-md hover:bg-zinc-200 md:right-4 `}
         ref={collapseButtonRef}
       >
         <FiChevronDown
@@ -105,29 +85,31 @@ export const HeadShot = ({
           }}
         />
       </span>
-      {/* <motion.div
-        className={`absolute -right-10 bottom-14 z-50 flex rounded-full border-2 border-zinc-900 bg-white p-1 text-slate-900 ring-4 ring-white drop-shadow-md hover:bg-zinc-200 md:ml-40`}
-        initial={{ opacity: 0 }}
-        animate={{
-          opacity: headShotCollapsed ? 1 : 0,
-          transition: { delay: headShotCollapsed ? 0.25 : 0 },
-        }}
-        exit={{ opacity: 0, transition: { delay: 0 } }}
-      >
-        <FiRefreshCcw
-          className={`h-4 w-4 stroke-[3px] ${
-            headShotImage === 'mark' && 'rotate-180'
-          } transition duration-300 ease-in-out`}
-          onClick={() => {
-            setShirtOverlayHidden(false)
-            setHeadShotImage(headShotImage === 'sam' ? 'mark' : 'sam')
-            setHeaderArray(
-              headShotImage === 'sam' ? ['MARK'] : ['SAM', 'TANNER']
-            )
-            setTheme(headShotImage === 'sam' ? 'mark' : 'default')
+      <AnimatePresence>
+        <motion.div
+          className={`absolute right-0 bottom-14 z-50 flex rounded-full border-2 border-zinc-900 bg-white p-1 text-slate-900 ring-4 ring-white drop-shadow-md hover:bg-zinc-200 md:right-4 md:ml-40`}
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: headShotCollapsed ? 1 : 0,
+            transition: { delay: headShotCollapsed ? 0.25 : 0 },
           }}
-        />
-      </motion.div> */}
+          exit={{ opacity: 0, transition: { delay: 0 } }}
+        >
+          <FiRefreshCcw
+            className={`h-4 w-4 stroke-[3px] ${
+              headShotImage === 'mark' && 'rotate-180'
+            } transition duration-300 ease-in-out`}
+            onClick={() => {
+              setShirtOverlayHidden(false)
+              setHeadShotImage(headShotImage === 'sam' ? 'mark' : 'sam')
+              setHeaderArray(
+                headShotImage === 'sam' ? ['MARK'] : ['SAM', 'TANNER']
+              )
+              setTheme(headShotImage === 'sam' ? 'mark' : 'default')
+            }}
+          />
+        </motion.div>
+      </AnimatePresence>
     </>
   )
 }

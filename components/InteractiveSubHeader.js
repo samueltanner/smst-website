@@ -1,5 +1,5 @@
 import { useRef, useState, Fragment, useEffect, useContext } from 'react'
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { MoveableLetter } from './MoveableLetter'
 import { HeadShot } from './HeadShot'
 import ThemeContext from './theme/themeContext'
