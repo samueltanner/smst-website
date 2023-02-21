@@ -180,7 +180,7 @@ export const AboutMeSection = () => {
               : 'md:order-2 md:-mr-12'
           }`}
         >
-          <div className="h-full md:flex md:flex-col md:items-center md:justify-center">
+          <div className="h-full md:flex md:flex-col md:items-start md:justify-center">
             {jsonToParagraphs(variants[sectionIndex]?.body)}
             {variants[sectionIndex]?.button && (
               <>
