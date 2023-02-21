@@ -48,12 +48,10 @@ export const Header = ({ sticky = false }) => {
 
   return (
     <div
-      className={`${
-        sticky ? 'sticky top-0' : ''
-      } z-40 select-none bg-primary font-primary drop-shadow-lg`}
+      className={` z-40 select-none bg-primary font-primary drop-shadow-lg `}
       ref={headerRef}
     >
-      <div className="flex h-20 items-center justify-between px-6">
+      <div className="flex h-20 items-center justify-between overflow-visible px-6">
         <Icon
           className={
             'hidden h-8 w-8 fill-current text-white antialiased sm:block'
